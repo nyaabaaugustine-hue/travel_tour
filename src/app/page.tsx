@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { FlightSearchForm } from "@/components/flight-search-form";
@@ -25,11 +24,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-travel");
-  const logo = PlaceHolderImages.find(img => img.id === "business-logo");
+  const currentYear = 2024; // Hardcoded to prevent hydration mismatch
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -166,7 +164,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {PlaceHolderImages.filter(img => img.id.startsWith('dest-')).slice(0, 6).map((dest) => (
                 <Link href="/destinations" key={dest.id} className="group">
-                  <div className="relative h-[375px] rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:-translate-y-4">
+                  <div className="relative h-[280px] rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:-translate-y-4">
                     <Image 
                       src={dest.imageUrl} 
                       alt={dest.description} 
@@ -178,11 +176,11 @@ export default function Home() {
                     <div className="absolute top-6 right-6">
                       <Badge className="bg-primary text-white border-none shadow-lg">Trending</Badge>
                     </div>
-                    <div className="absolute bottom-8 left-8 right-8 space-y-4">
-                      <h3 className="text-white font-bold text-2xl uppercase tracking-tight">{dest.id.split('-')[1]}</h3>
-                      <div className="flex justify-between items-center pt-4 border-t border-white/20">
-                        <span className="text-white/60 text-sm font-medium">Starting from</span>
-                        <span className="text-secondary font-black text-xl">$199</span>
+                    <div className="absolute bottom-8 left-8 right-8 space-y-2">
+                      <h3 className="text-white font-bold text-xl uppercase tracking-tight">{dest.id.split('-')[1]}</h3>
+                      <div className="flex justify-between items-center pt-2 border-t border-white/20">
+                        <span className="text-white/60 text-xs font-medium">Starting from</span>
+                        <span className="text-secondary font-black text-lg">$199</span>
                       </div>
                     </div>
                   </div>
@@ -239,11 +237,10 @@ export default function Home() {
         </section>
       </main>
       
-      {/* Redesigned Trust-First Footer */}
+      {/* Footer */}
       <footer className="bg-slate-50 pt-16 border-t overflow-hidden">
         <div className="container mx-auto px-4 pb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-            {/* Trust & Badges Section */}
             <div className="lg:col-span-4 space-y-8">
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-slate-800">Trusted by over 1 million people across the globe.</h3>
@@ -274,7 +271,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Navigation Columns */}
             <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
               <div>
                 <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-900">About Us</h4>
@@ -309,7 +305,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Partners Section */}
         <div className="bg-slate-100/50 py-12 border-y">
           <div className="container mx-auto px-4 text-center">
             <div className="inline-block px-4 py-1 mb-8 bg-white border rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-500 shadow-sm">
@@ -326,10 +321,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Copyright Bar */}
         <div className="bg-slate-900 text-white py-6">
           <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-medium tracking-wide">
-            <p>© {new Date().getFullYear()} VoyageSync Global Inc. All Rights Reserved.</p>
+            <p>© {currentYear} VoyageSync Global Inc. All Rights Reserved.</p>
             <div className="flex items-center gap-6">
               <div className="flex gap-1">
                 <div className="w-3 h-3 bg-red-600 rounded-sm" />
