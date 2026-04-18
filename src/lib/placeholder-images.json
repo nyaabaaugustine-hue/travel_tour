@@ -23,6 +23,24 @@
       "description": "Big Ben and Palace of Westminster",
       "imageUrl": "https://picsum.photos/seed/london/600/400",
       "imageHint": "london bigben"
+    },
+    {
+      "id": "app-mockup",
+      "description": "Person holding a smartphone with a flight booking app",
+      "imageUrl": "https://picsum.photos/seed/mobile-app/800/600",
+      "imageHint": "smartphone travel"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Professional man smiling",
+      "imageUrl": "https://picsum.photos/seed/person1/100/100",
+      "imageHint": "portrait man"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Professional woman smiling",
+      "imageUrl": "https://picsum.photos/seed/person2/100/100",
+      "imageHint": "portrait woman"
     }
   ]
 }

@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 210 25% 95%; /* #ECF3F5 */
+    --background: 210 25% 98%; /* Lighter background for a cleaner look */
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -24,7 +24,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 204 85% 43%;
-    --radius: 0.75rem;
+    --radius: 1rem;
     --chart-1: 204 85% 43%;
     --chart-2: 235 57% 50%;
     --chart-3: 197 37% 24%;
@@ -62,4 +62,22 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.glass-morphism {
+  @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-xl;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
 }

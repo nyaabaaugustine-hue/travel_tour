@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { PlaneTakeoff, User, Menu } from "lucide-react";
+import { PlaneTakeoff, User, Menu, ChevronDown, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,50 +13,73 @@ import {
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
               <PlaneTakeoff className="h-6 w-6" />
             </div>
-            <span className="font-headline text-2xl font-bold tracking-tight text-primary">
+            <span className="font-headline text-2xl font-black tracking-tighter text-primary">
               VoyageSync
             </span>
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <Link href="/flights" className="transition-colors hover:text-primary">
+        <nav className="hidden lg:flex items-center gap-10 text-[13px] font-bold uppercase tracking-widest text-muted-foreground">
+          <Link href="/flights" className="transition-all hover:text-primary hover:translate-y-[-1px]">
             Find Flights
           </Link>
-          <Link href="/destinations" className="transition-colors hover:text-primary">
+          <Link href="/destinations" className="transition-all hover:text-primary hover:translate-y-[-1px]">
             Destinations
           </Link>
-          <Link href="/deals" className="transition-colors hover:text-primary">
+          <Link href="/deals" className="transition-all hover:text-primary hover:translate-y-[-1px]">
             Special Deals
+          </Link>
+          <Link href="/dashboard" className="transition-all hover:text-primary hover:translate-y-[-1px]">
+            Corporate Sync
           </Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" className="md:hidden">
+           <div className="hidden md:flex items-center gap-2 text-xs font-bold text-muted-foreground mr-4 cursor-pointer hover:text-primary transition-colors">
+              <Globe className="h-4 w-4" />
+              <span>EN / USD</span>
+              <ChevronDown className="h-3 w-3" />
+           </div>
+           
+          <Button variant="ghost" size="icon" className="lg:hidden">
             <Menu className="h-5 w-5" />
           </Button>
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="hidden md:flex items-center gap-2">
+              <Button className="hidden md:flex items-center gap-2 rounded-full px-6 bg-slate-900 hover:bg-slate-800 font-bold">
                 <User className="h-4 w-4" />
-                Sign In
+                Member Login
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link href="/dashboard" className="w-full">My Dashboard</Link>
+            <DropdownMenuContent align="end" className="w-56 rounded-2xl p-2 mt-2">
+              <DropdownMenuItem asChild className="rounded-xl py-3 cursor-pointer">
+                <Link href="/dashboard" className="w-full flex items-center gap-2 font-bold">
+                  <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <User className="h-4 w-4" />
+                  </div>
+                  My Dashboard
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/dashboard" className="w-full">My Bookings</Link>
+              <DropdownMenuItem asChild className="rounded-xl py-3 cursor-pointer">
+                <Link href="/dashboard" className="w-full flex items-center gap-2 font-bold">
+                   <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <PlaneTakeoff className="h-4 w-4" />
+                  </div>
+                  My Bookings
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-destructive">Log Out</DropdownMenuItem>
+              <hr className="my-2" />
+              <DropdownMenuItem className="text-destructive font-bold rounded-xl py-3 cursor-pointer">
+                Log Out
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
