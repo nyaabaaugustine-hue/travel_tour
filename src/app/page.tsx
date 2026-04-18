@@ -19,12 +19,18 @@ import {
   Shield,
   CheckCircle,
   Zap,
-  Newspaper
+  HelpCircle
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-travel");
@@ -214,6 +220,54 @@ export default function Home() {
                 image="https://picsum.photos/seed/ghperson2/100/100"
               />
             </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-32 bg-white border-t">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center mb-16 space-y-4">
+              <HelpCircle className="h-12 w-12 text-primary/20 mx-auto" />
+              <h2 className="text-4xl font-bold tracking-tight">Frequently Asked Questions</h2>
+              <p className="text-muted-foreground text-lg">Everything you need to know about synchronizing your next journey.</p>
+            </div>
+            
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              <AccordionItem value="item-1" className="border rounded-2xl px-6 bg-slate-50/50">
+                <AccordionTrigger className="hover:no-underline font-bold text-lg py-6">How does VoyageSync find the best prices?</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                  Our proprietary SyncIntelligence engine scans real-time data from over 500+ global airlines simultaneously. We synchronize pricing, route efficiency, and connection times to offer you the most logical and cost-effective travel options.
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="item-2" className="border rounded-2xl px-6 bg-slate-50/50">
+                <AccordionTrigger className="hover:no-underline font-bold text-lg py-6">What payment methods are supported in Ghana?</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                  We proudly support all major global credit cards (Visa, Mastercard, AMEX) and local payment methods including Mobile Money (MTN, Telecel, AT) via our secure gateway, ensuring a seamless transaction experience.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border rounded-2xl px-6 bg-slate-50/50">
+                <AccordionTrigger className="hover:no-underline font-bold text-lg py-6">Can I manage corporate travel for my team?</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                  Absolutely. Our "Corporate Sync" dashboard allows businesses to manage multiple travelers, track expenses, and access exclusive corporate rates and flexible cancellation policies specifically designed for West African enterprises.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border rounded-2xl px-6 bg-slate-50/50">
+                <AccordionTrigger className="hover:no-underline font-bold text-lg py-6">Is my data secure with VoyageSync?</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                  Security is our priority. We are PCI DSS certified and use AES-256 bank-grade encryption to protect your personal information and transaction details. We are audited regularly to ensure we meet the highest global security standards.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="border rounded-2xl px-6 bg-slate-50/50">
+                <AccordionTrigger className="hover:no-underline font-bold text-lg py-6">How do I change or cancel my booking?</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+                  You can manage your bookings directly from your Member Dashboard. Depending on your ticket type, you can initiate changes or cancellations with a single click. Our 24/7 hospitality team is also available to assist you via WhatsApp or phone.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </section>
 
