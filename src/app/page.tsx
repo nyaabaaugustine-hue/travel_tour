@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-travel");
   const appImage = PlaceHolderImages.find((img) => img.id === "app-mockup");
+  const logo = PlaceHolderImages.find(img => img.id === "business-logo");
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -297,9 +298,16 @@ export default function Home() {
       <footer className="bg-white border-t py-24">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-16">
           <div className="space-y-8">
-            <div className="flex items-center space-x-2">
-              <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center text-white">
-                <PlaneTakeoff className="h-6 w-6" />
+            <div className="flex items-center space-x-3">
+              <div className="relative h-10 w-10 overflow-hidden rounded-lg">
+                {logo && (
+                  <Image 
+                    src={logo.imageUrl} 
+                    alt="VoyageSync Logo" 
+                    fill 
+                    className="object-cover"
+                  />
+                )}
               </div>
               <span className="font-headline text-2xl font-black text-primary tracking-tight">VoyageSync</span>
             </div>

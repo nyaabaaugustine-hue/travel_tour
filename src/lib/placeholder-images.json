@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "business-logo",
+      "description": "VoyageSync Official Logo",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1775296671/logo_xcjkpn.jpg",
+      "imageHint": "business logo"
+    },
+    {
       "id": "hero-travel",
       "description": "Aerial view of a plane flying over clouds at sunset",
       "imageUrl": "https://picsum.photos/seed/travel-hero/1200/600",
