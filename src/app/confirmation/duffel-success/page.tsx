@@ -1,7 +1,7 @@
 "use client";
 
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -19,12 +19,11 @@ interface BookingData {
   status?: string;
 }
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const [booking, setBooking] = useState<BookingData | null>(null);
 
   useEffect(() => {
-    // Parse booking data from URL params or localStorage
     const ref = searchParams.get("reference");
     const name = searchParams.get("name");
     const route = searchParams.get("route");
@@ -40,7 +39,6 @@ export default function SuccessPage() {
         status: "confirmed",
       });
     } else {
-      // Demo data for testing
       setBooking({
         reference: "VOY-" + Math.random().toString(36).substr(2, 9).toUpperCase(),
         passengerName: "Valued Customer",
@@ -63,7 +61,6 @@ export default function SuccessPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
-
       <main className="flex-1 pt-20 pb-16">
         <div className="container mx-auto px-4">
           <Card className="max-w-2xl mx-auto rounded-[5%] shadow-2xl">
@@ -79,16 +76,14 @@ export default function SuccessPage() {
                   Thank You for Your Booking!
                 </h1>
                 <p className="text-muted-foreground mt-2">
-                  Your flight has been successfully booked. A confirmation email will be sent shortly.
+                  Your flight has been successfully booked.
                 </p>
               </div>
-
               <div className="bg-muted/30 rounded-[5%] p-6 mb-6">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm text-muted-foreground">Booking Reference</span>
                   <span className="font-display text-2xl font-bold">{booking.reference}</span>
                 </div>
-                
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -107,18 +102,16 @@ export default function SuccessPage() {
                   </div>
                 </div>
               </div>
-
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <Button variant="outline" className="rounded-[5%]">
                   <Download className="mr-2 h-4 w-4" />
-                  Download Ticket
+                  Download
                 </Button>
                 <Button variant="outline" className="rounded-[5%]">
                   <Printer className="mr-2 h-4 w-4" />
                   Print
                 </Button>
               </div>
-
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/flights" className="flex-1">
                   <Button className="w-full rounded-[5%]">
@@ -137,5 +130,17 @@ export default function SuccessPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <SuccessContent />
+    </Suspense>
   );
 }
