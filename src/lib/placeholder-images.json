@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-travel",
+      "description": "Aerial view of a plane flying over clouds at sunset",
+      "imageUrl": "https://picsum.photos/seed/travel-hero/1200/600",
+      "imageHint": "airplane sunset"
+    },
+    {
+      "id": "dest-tokyo",
+      "description": "Tokyo city skyline with Mount Fuji",
+      "imageUrl": "https://picsum.photos/seed/tokyo/600/400",
+      "imageHint": "tokyo skyline"
+    },
+    {
+      "id": "dest-paris",
+      "description": "Eiffel Tower in Paris at dusk",
+      "imageUrl": "https://picsum.photos/seed/paris/600/400",
+      "imageHint": "paris eiffel"
+    },
+    {
+      "id": "dest-london",
+      "description": "Big Ben and Palace of Westminster",
+      "imageUrl": "https://picsum.photos/seed/london/600/400",
+      "imageHint": "london bigben"
+    }
+  ]
 }

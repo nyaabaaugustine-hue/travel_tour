@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { FlightSearchForm } from "@/components/flight-search-form";
@@ -15,14 +14,16 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative h-[600px] w-full overflow-hidden">
-          <Image
-            src={heroImage?.imageUrl || ""}
-            alt={heroImage?.description || "Travel"}
-            fill
-            className="object-cover brightness-75"
-            priority
-            data-ai-hint={heroImage?.imageHint}
-          />
+          {heroImage?.imageUrl && (
+            <Image
+              src={heroImage.imageUrl}
+              alt={heroImage.description || "Travel"}
+              fill
+              className="object-cover brightness-75"
+              priority
+              data-ai-hint={heroImage.imageHint}
+            />
+          )}
           <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
             <div className="w-full max-w-5xl space-y-8">
               <div className="text-center space-y-4">
