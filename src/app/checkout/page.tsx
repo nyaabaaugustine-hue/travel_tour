@@ -294,6 +294,24 @@ function CheckoutContent() {
     </div>
   );
 }
+
+function Field({
+  id, label, placeholder, type = "text", icon,
+}: {
+  id: string;
+  label: string;
+  placeholder: string;
+  type?: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <Label htmlFor={id} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        {label}
+      </Label>
+      <div className="relative">
+        <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground">{icon}</span>
+        <Input id={id} type={type} placeholder={placeholder} className="pl-10 h-12 rounded-xl border-border" required />
       </div>
     </div>
   );
