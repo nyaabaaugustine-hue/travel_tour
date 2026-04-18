@@ -10,21 +10,25 @@ import {
   Clock, 
   PlaneTakeoff, 
   Star, 
-  Smartphone, 
   Globe, 
   Quote, 
   ArrowRight,
   Mail,
-  Heart
+  Heart,
+  Lock,
+  Award,
+  Shield,
+  CheckCircle,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-travel");
-  const appImage = PlaceHolderImages.find((img) => img.id === "app-mockup");
   const logo = PlaceHolderImages.find(img => img.id === "business-logo");
 
   return (
@@ -69,20 +73,6 @@ export default function Home() {
               <div className="glass-morphism rounded-[2rem] p-4 md:p-8 animate-in zoom-in-95 duration-700 delay-300">
                 <FlightSearchForm />
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Trusted By Section */}
-        <section className="py-12 bg-white border-y">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-8">Serving the Global Nomad from Ghana to the World</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              <div className="flex items-center gap-2"><Plane className="h-6 w-6" /><span className="font-black text-xl">ACCRA-AIR</span></div>
-              <div className="flex items-center gap-2"><Globe className="h-6 w-6" /><span className="font-black text-xl">GLOBAL</span></div>
-              <div className="flex items-center gap-2"><Clock className="h-6 w-6" /><span className="font-black text-xl">NOMAD</span></div>
-              <div className="flex items-center gap-2"><ShieldCheck className="h-6 w-6" /><span className="font-black text-xl">VIRTUE</span></div>
-              <div className="flex items-center gap-2"><PlaneTakeoff className="h-6 w-6" /><span className="font-black text-xl">AERO</span></div>
             </div>
           </div>
         </section>
@@ -249,67 +239,106 @@ export default function Home() {
         </section>
       </main>
       
-      <footer className="bg-white border-t py-24">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-16">
-          <div className="space-y-8">
-            <div className="flex items-center space-x-3">
-              <div className="relative h-10 w-10 overflow-hidden rounded-lg">
-                {logo && (
-                  <Image 
-                    src={logo.imageUrl} 
-                    alt="VoyageSync Logo" 
-                    fill 
-                    className="object-cover"
-                  />
-                )}
+      {/* Redesigned Trust-First Footer */}
+      <footer className="bg-slate-50 pt-16 border-t overflow-hidden">
+        <div className="container mx-auto px-4 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+            {/* Trust & Badges Section */}
+            <div className="lg:col-span-4 space-y-8">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-slate-800">Trusted by over 1 million people across the globe.</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center">
+                  <BadgeContainer icon={<Award className="h-6 w-6" />} label="2023 Winner" color="bg-green-100 text-green-700" />
+                  <BadgeContainer icon={<Star className="h-6 w-6" />} label="Top Rated" color="bg-primary/10 text-primary" />
+                  <BadgeContainer icon={<Globe className="h-6 w-6" />} label="Global Award" color="bg-yellow-100 text-yellow-700" />
+                  <BadgeContainer icon={<Zap className="h-6 w-6" />} label="Fastest Growing" color="bg-blue-100 text-blue-700" />
+                </div>
               </div>
-              <span className="font-headline text-2xl font-black text-primary tracking-tight">VoyageSync</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Proudly Ghanaian, connecting you to the global network through real-time intelligence.
-            </p>
-            <div className="flex gap-4">
-              <SocialIcon icon={<Globe className="h-4 w-4" />} />
-              <SocialIcon icon={<Mail className="h-4 w-4" />} />
-              <div className="flex gap-1 ml-auto">
-                <div className="w-4 h-4 bg-red-600 rounded-sm" />
-                <div className="w-4 h-4 bg-yellow-400 rounded-sm" />
-                <div className="w-4 h-4 bg-green-600 rounded-sm" />
+
+              <div className="flex items-center gap-6 pt-4 border-t border-slate-200">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-8 w-8 text-green-600" />
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 leading-none">PCI DSS</p>
+                    <p className="text-xs font-black text-slate-800">Certified by SISA</p>
+                  </div>
+                </div>
+                <div className="h-8 w-px bg-slate-200" />
+                <div className="flex items-center gap-2">
+                  <Lock className="h-8 w-8 text-primary" />
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 leading-none">SECURED BY</p>
+                    <p className="text-xs font-black text-slate-800">SECTIGO</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div>
-            <h4 className="font-bold mb-8 text-sm uppercase tracking-widest text-foreground">Services</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <FooterLink>Flight Search</FooterLink>
-              <FooterLink>Corporate Sync</FooterLink>
-              <FooterLink>Group Travel</FooterLink>
-              <FooterLink>Concierge Desk</FooterLink>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-8 text-sm uppercase tracking-widest text-foreground">Explore</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <FooterLink>Top Deals</FooterLink>
-              <FooterLink>Destinations</FooterLink>
-              <FooterLink>Travel Guides</FooterLink>
-              <FooterLink>Partner Airlines</FooterLink>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-8 text-sm uppercase tracking-widest text-foreground">Support</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <FooterLink>Help Center</FooterLink>
-              <FooterLink>Safety Center</FooterLink>
-              <FooterLink>Contact Support</FooterLink>
-              <FooterLink>Privacy Policy</FooterLink>
-            </ul>
+
+            {/* Navigation Columns */}
+            <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+              <div>
+                <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-900">About Us</h4>
+                <ul className="space-y-3 text-sm text-slate-600">
+                  <FooterLink>Home</FooterLink>
+                  <FooterLink>Terms of Services</FooterLink>
+                  <FooterLink>Privacy Statement</FooterLink>
+                  <FooterLink>Blog</FooterLink>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-900">Our Services</h4>
+                <ul className="space-y-3 text-sm text-slate-600">
+                  <FooterLink>Flights</FooterLink>
+                  <FooterLink>Holidays</FooterLink>
+                  <FooterLink>Cruises</FooterLink>
+                  <FooterLink>Hotels</FooterLink>
+                  <FooterLink>eSIM</FooterLink>
+                  <FooterLink>Airlines</FooterLink>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-900">Customer Support</h4>
+                <ul className="space-y-3 text-sm text-slate-600">
+                  <FooterLink>FAQ</FooterLink>
+                  <FooterLink>Why Us</FooterLink>
+                  <FooterLink>Contact Us</FooterLink>
+                  <FooterLink>Careers</FooterLink>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="container mx-auto px-4 mt-24 pt-8 border-t text-center">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VoyageSync Global Inc. Connecting Ghana to the world.
-          </p>
+
+        {/* Partners Section */}
+        <div className="bg-slate-100/50 py-12 border-y">
+          <div className="container mx-auto px-4 text-center">
+            <div className="inline-block px-4 py-1 mb-8 bg-white border rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-500 shadow-sm">
+              Our Proud Partners
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+              <PartnerLogo name="CIH BANK" />
+              <PartnerLogo name="MSC CRUISES" />
+              <PartnerLogo name="NORWEGIAN" />
+              <PartnerLogo name="SAUDI TOURISM" />
+              <PartnerLogo name="ROYAL CARIBBEAN" />
+              <PartnerLogo name="WOMEN OF VALOUR" />
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright Bar */}
+        <div className="bg-slate-900 text-white py-6">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-medium tracking-wide">
+            <p>© {new Date().getFullYear()} VoyageSync Global Inc. All Rights Reserved.</p>
+            <div className="flex items-center gap-6">
+              <div className="flex gap-1">
+                <div className="w-3 h-3 bg-red-600 rounded-sm" />
+                <div className="w-3 h-3 bg-yellow-400 rounded-sm" />
+                <div className="w-3 h-3 bg-green-600 rounded-sm" />
+              </div>
+              <p className="opacity-60">Connecting Ghana to the world.</p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
@@ -351,18 +380,28 @@ function TestimonialCard({ name, role, content, image }: { name: string, role: s
   );
 }
 
-function SocialIcon({ icon }: { icon: React.ReactNode }) {
+function BadgeContainer({ icon, label, color }: { icon: React.ReactNode, label: string, color: string }) {
   return (
-    <div className="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-all cursor-pointer">
-      {icon}
+    <div className="flex flex-col items-center gap-2">
+      <div className={`h-12 w-12 rounded-full flex items-center justify-center shadow-sm border ${color}`}>
+        {icon}
+      </div>
+      <p className="text-[10px] font-bold text-center leading-tight text-slate-600">{label}</p>
+    </div>
+  );
+}
+
+function PartnerLogo({ name }: { name: string }) {
+  return (
+    <div className="flex items-center justify-center">
+      <span className="text-sm font-black tracking-tighter whitespace-nowrap">{name}</span>
     </div>
   );
 }
 
 function FooterLink({ children }: { children: React.ReactNode }) {
   return (
-    <li className="hover:text-primary transition-colors cursor-pointer flex items-center gap-2">
-      <div className="h-1 w-1 rounded-full bg-slate-300" />
+    <li className="hover:text-primary transition-colors cursor-pointer text-slate-500 hover:translate-x-1 transition-transform">
       {children}
     </li>
   );
