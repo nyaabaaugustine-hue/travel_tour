@@ -154,9 +154,9 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
               <div className="space-y-4">
-                <Badge className="bg-secondary/20 text-foreground border-none">Global Destinations</Badge>
-                <h2 className="font-headline text-4xl font-bold tracking-tight">Trending Routes from Accra</h2>
-                <p className="text-muted-foreground text-lg">Curated routes based on real-time availability and local demand.</p>
+                <Badge className="bg-secondary/20 text-foreground border-none">African Destinations</Badge>
+                <h2 className="font-headline text-4xl font-bold tracking-tight">Trending Across Africa</h2>
+                <p className="text-muted-foreground text-lg">Curated routes based on regional travel patterns and local demand.</p>
               </div>
               <Button asChild variant="outline" className="rounded-full px-8 border-primary text-primary hover:bg-primary/5">
                 <Link href="/destinations">Explore All Destinations</Link>
@@ -164,9 +164,9 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PlaceHolderImages.filter(img => img.id.startsWith('dest-')).slice(0, 3).map((dest) => (
+              {PlaceHolderImages.filter(img => img.id.startsWith('dest-')).slice(0, 6).map((dest) => (
                 <Link href="/destinations" key={dest.id} className="group">
-                  <div className="relative h-[500px] rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:-translate-y-4">
+                  <div className="relative h-[375px] rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:-translate-y-4">
                     <Image 
                       src={dest.imageUrl} 
                       alt={dest.description} 
@@ -179,10 +179,10 @@ export default function Home() {
                       <Badge className="bg-primary text-white border-none shadow-lg">Trending</Badge>
                     </div>
                     <div className="absolute bottom-8 left-8 right-8 space-y-4">
-                      <h3 className="text-white font-bold text-3xl uppercase tracking-tight">{dest.id.split('-')[1]}</h3>
+                      <h3 className="text-white font-bold text-2xl uppercase tracking-tight">{dest.id.split('-')[1]}</h3>
                       <div className="flex justify-between items-center pt-4 border-t border-white/20">
                         <span className="text-white/60 text-sm font-medium">Starting from</span>
-                        <span className="text-secondary font-black text-2xl">$299</span>
+                        <span className="text-secondary font-black text-xl">$199</span>
                       </div>
                     </div>
                   </div>

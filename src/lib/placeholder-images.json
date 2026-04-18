@@ -13,22 +13,40 @@
       "imageHint": "airplane sunset"
     },
     {
-      "id": "dest-tokyo",
-      "description": "Tokyo city skyline with Mount Fuji",
-      "imageUrl": "https://picsum.photos/seed/tokyo/600/400",
-      "imageHint": "tokyo skyline"
+      "id": "dest-accra",
+      "description": "Independence Arch in Accra, Ghana",
+      "imageUrl": "https://picsum.photos/seed/accra/600/400",
+      "imageHint": "accra ghana"
     },
     {
-      "id": "dest-paris",
-      "description": "Eiffel Tower in Paris at dusk",
-      "imageUrl": "https://picsum.photos/seed/paris/600/400",
-      "imageHint": "paris eiffel"
+      "id": "dest-lagos",
+      "description": "Lekki-Ikoyi Bridge in Lagos, Nigeria",
+      "imageUrl": "https://picsum.photos/seed/lagos/600/400",
+      "imageHint": "lagos nigeria"
     },
     {
-      "id": "dest-london",
-      "description": "Big Ben and Palace of Westminster",
-      "imageUrl": "https://picsum.photos/seed/london/600/400",
-      "imageHint": "london bigben"
+      "id": "dest-nairobi",
+      "description": "Nairobi city skyline with national park",
+      "imageUrl": "https://picsum.photos/seed/nairobi/600/400",
+      "imageHint": "nairobi kenya"
+    },
+    {
+      "id": "dest-capetown",
+      "description": "Table Mountain in Cape Town, South Africa",
+      "imageUrl": "https://picsum.photos/seed/capetown/600/400",
+      "imageHint": "cape town"
+    },
+    {
+      "id": "dest-cairo",
+      "description": "Great Pyramids of Giza in Cairo, Egypt",
+      "imageUrl": "https://picsum.photos/seed/cairo/600/400",
+      "imageHint": "cairo egypt"
+    },
+    {
+      "id": "dest-casablanca",
+      "description": "Hassan II Mosque in Casablanca, Morocco",
+      "imageUrl": "https://picsum.photos/seed/casablanca/600/400",
+      "imageHint": "casablanca morocco"
     },
     {
       "id": "app-mockup",
