@@ -18,7 +18,8 @@ import {
   Award,
   Shield,
   CheckCircle,
-  Zap
+  Zap,
+  Newspaper
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -212,6 +213,108 @@ export default function Home() {
                 content="Beautiful interface and excellent service. The Ghanaian hospitality really shows in their support team's attitude."
                 image="https://picsum.photos/seed/ghperson2/100/100"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Our News Section */}
+        <section className="py-32 bg-slate-50 border-y overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div className="space-y-4">
+                <Badge variant="outline" className="border-primary text-primary px-4 py-1">Updates & Insights</Badge>
+                <h2 className="font-headline text-4xl font-bold tracking-tight">Our News</h2>
+                <p className="text-muted-foreground text-lg">Stay synchronized with the latest trends in global and local travel.</p>
+              </div>
+              <Button variant="ghost" className="font-bold text-primary hover:bg-primary/5 group">
+                View All Posts <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Blog Post 1 */}
+              <Card className="group overflow-hidden border-none shadow-md hover:shadow-2xl transition-all duration-500 rounded-[2rem] bg-white">
+                <div className="relative h-64 overflow-hidden">
+                  <Image 
+                    src="https://picsum.photos/seed/news1/600/400" 
+                    alt="Aviation Future" 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                    data-ai-hint="aviation technology"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-white/90 text-slate-900 backdrop-blur-sm border-none shadow-sm">Industry</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-8 space-y-4">
+                  <div className="flex items-center gap-2 text-[10px] font-bold text-primary uppercase tracking-widest">
+                    <Clock className="h-3 w-3" /> March 15, 2024
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">SyncIntelligence: The Future of African Aviation</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                    Exploring how real-time data synchronization is revolutionizing the passenger experience across the continent.
+                  </p>
+                  <Link href="#" className="inline-flex items-center text-sm font-black text-slate-900 group/link">
+                    Read More <ArrowRight className="ml-1 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Blog Post 2 */}
+              <Card className="group overflow-hidden border-none shadow-md hover:shadow-2xl transition-all duration-500 rounded-[2rem] bg-white">
+                <div className="relative h-64 overflow-hidden">
+                  <Image 
+                    src="https://picsum.photos/seed/news2/600/400" 
+                    alt="Sustainable Travel" 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                    data-ai-hint="nature travel"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-white/90 text-slate-900 backdrop-blur-sm border-none shadow-sm">Travel Tips</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-8 space-y-4">
+                  <div className="flex items-center gap-2 text-[10px] font-bold text-primary uppercase tracking-widest">
+                    <Clock className="h-3 w-3" /> March 12, 2024
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">How to Travel Sustainably in West Africa</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                    Discover eco-friendly resorts and sustainable travel practices that support local Ghanaian communities.
+                  </p>
+                  <Link href="#" className="inline-flex items-center text-sm font-black text-slate-900 group/link">
+                    Read More <ArrowRight className="ml-1 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Blog Post 3 */}
+              <Card className="group overflow-hidden border-none shadow-md hover:shadow-2xl transition-all duration-500 rounded-[2rem] bg-white">
+                <div className="relative h-64 overflow-hidden">
+                  <Image 
+                    src="https://picsum.photos/seed/news3/600/400" 
+                    alt="Digital Innovation Award" 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                    data-ai-hint="digital award"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-white/90 text-slate-900 backdrop-blur-sm border-none shadow-sm">Awards</Badge>
+                  </div>
+                </div>
+                <CardContent className="p-8 space-y-4">
+                  <div className="flex items-center gap-2 text-[10px] font-bold text-primary uppercase tracking-widest">
+                    <Clock className="h-3 w-3" /> March 08, 2024
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">VoyageSync Wins Digital Innovation Award</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                    We are proud to announce our recognition as the leading travel technology provider in West Africa for 2024.
+                  </p>
+                  <Link href="#" className="inline-flex items-center text-sm font-black text-slate-900 group/link">
+                    Read More <ArrowRight className="ml-1 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
