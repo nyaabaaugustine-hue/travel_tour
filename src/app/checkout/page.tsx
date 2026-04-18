@@ -284,7 +284,7 @@ export default function CheckoutPage() {
 
               <div className="flex items-center justify-center gap-2 text-muted-foreground/50 text-[11px]">
                 <Info className="h-3 w-3" />
-                <span>Need help? Call +233 30 260 0000</span>
+                <span className="text-secondary font-semibold">Need help? Call +233 30 260 0000</span>
               </div>
             </div>
           </aside>

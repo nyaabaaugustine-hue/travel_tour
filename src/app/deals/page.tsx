@@ -179,11 +179,11 @@ export default function DealsPage() {
               </Badge>
             </div>
             <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight">
-              Synchronized<br />
+              Unbeatable<br />
               <span className="gradient-text">Deals.</span>
             </h1>
             <p className="text-white/60 text-lg leading-relaxed max-w-lg">
-              Our engine scans 500+ airlines around the clock. These prices are exclusively synchronized for you — but they won&apos;t last.
+              Our smart search engine scans 500+ airlines around the clock. These prices are exclusively found for you — but they won&apos;t last.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               {[
@@ -228,7 +228,7 @@ export default function DealsPage() {
             </div>
             <h2 className="font-display text-2xl font-bold">Need a custom route?</h2>
             <p className="text-muted-foreground max-w-md mx-auto text-sm leading-relaxed">
-              Our AI-driven SyncIntelligence searches 500+ airlines in real-time. Try a custom search for the most precise pricing on any route.
+              Our AI-driven smart search checks 500+ airlines in real-time. Try a custom search for the most precise pricing on any route.
             </p>
             <Button asChild className="btn-navy rounded-full px-8 h-11 font-bold gap-2 mt-2">
               <Link href="/">

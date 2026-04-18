@@ -36,7 +36,7 @@ export default function ConfirmationPage() {
           <div className="space-y-2">
             <h1 className="font-display text-4xl font-bold">You&apos;re All Set!</h1>
             <p className="text-muted-foreground text-lg">
-              Your flight has been synchronized and confirmed. Bon voyage!
+              Your flight is booked and confirmed. Bon voyage!
             </p>
           </div>
         </div>

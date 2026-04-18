@@ -187,7 +187,7 @@ export default function DestinationsPage() {
             Can&apos;t find your destination?
           </h2>
           <p className="text-white/50 max-w-md mx-auto">
-            Our SyncIntelligence engine covers 195 countries. Search directly for any city or airport worldwide.
+            Our smart search covers 195 countries. Search directly for any city or airport worldwide.
           </p>
           <Button asChild className="btn-gold rounded-full px-8 h-12 font-bold gap-2">
             <Link href="/">

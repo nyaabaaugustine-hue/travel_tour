@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* ── VoyageSync Premium Palette ── */
+    /* ── Premium Travel Palette ── */
     --background: 36 33% 97%;          /* warm ivory */
     --foreground: 220 25% 10%;         /* deep charcoal */
     --card: 0 0% 100%;
@@ -241,4 +241,19 @@ input:focus, button:focus-visible, [data-state=open] {
   background:
     radial-gradient(ellipse 80% 80% at 20% 80%, hsla(215,55%,22%,.7) 0%, transparent 60%),
     radial-gradient(ellipse 60% 60% at 80% 20%, hsla(43,85%,52%,.15) 0%, transparent 50%);
+}
+
+/* ─── Partner logos scroll ─── */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  width: 200%;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }

@@ -3,19 +3,61 @@
     {
       "id": "business-logo",
       "description": "VoyageSync Official Logo",
-      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1775296671/logo_xcjkpn.jpg",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776535724/aaaaaaa_xu7z9a.png",
       "imageHint": "business logo"
     },
     {
       "id": "hero-travel",
       "description": "Aerial view of a plane flying over clouds at sunset",
-      "imageUrl": "https://picsum.photos/seed/travel-hero/1200/600",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide1_fracqs.jpg",
       "imageHint": "airplane sunset"
+    },
+    {
+      "id": "home-slide1",
+      "description": "Modern Accra skyline",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide5_jz621t.jpg",
+      "imageHint": "modern accra"
+    },
+    {
+      "id": "home-slide2",
+      "description": "Business traveler lounge",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide5_jz621t.jpg",
+      "imageHint": "lounge"
+    },
+    {
+      "id": "home-slide3",
+      "description": "Luxury aircraft cabin",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide6_lic8kj.jpg",
+      "imageHint": "aircraft cabin"
+    },
+    {
+      "id": "home-slide4",
+      "description": "Ghanaian culture festival",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide4_qsza8w.jpg",
+      "imageHint": "culture festival"
+    },
+    {
+      "id": "home-slide5",
+      "description": "Travel destination view",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide2_x5i3vt.jpg",
+      "imageHint": "travel destination"
+    },
+    {
+      "id": "home-slide6",
+      "description": "Beautiful landscape",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide3_tdjtnv.jpg",
+      "imageHint": "landscape"
+    },
+    {
+      "id": "home-slide7",
+      "description": "Travel adventure",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776514019/as_cf8py5.jpg",
+      "imageHint": "adventure"
     },
     {
       "id": "dest-accra",
       "description": "Independence Arch in Accra, Ghana",
-      "imageUrl": "https://picsum.photos/seed/accra/600/400",
+      "imageUrl": "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide4_qsza8w.jpg",
       "imageHint": "accra ghana"
     },
     {

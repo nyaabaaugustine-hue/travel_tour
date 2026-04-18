@@ -6,6 +6,7 @@ import Image from "next/image";
 import { User, Menu, X, ChevronDown, Globe, Phone, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,11 +15,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS = [
+const MAIN_LINKS = [
   { label: "Find Flights",    href: "/flights" },
   { label: "Destinations",   href: "/destinations" },
   { label: "Special Deals",  href: "/deals" },
-  { label: "Corporate Sync", href: "/dashboard" },
+  { label: "Insurance", href: "/insurance" },
+  { label: "Rewards", href: "/loyalty" },
+];
+
+const COMPANY_LINKS = [
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Insurance", href: "/insurance" },
+  { label: "Loyalty", href: "/loyalty" },
 ];
 
 export function Navbar() {
@@ -52,7 +61,7 @@ export function Navbar() {
             <span>24/7 Concierge Support</span>
           </div>
           <div className="flex items-center gap-6">
-            <span>🇬🇭 Ghana&apos;s Premier Travel Platform</span>
+            <span>Africa&apos;s Premier Travel Platform</span>
             <span className="opacity-40">|</span>
             <span className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
               <Globe className="h-3 w-3" /> EN / USD <ChevronDown className="h-2.5 w-2.5" />
@@ -63,21 +72,18 @@ export function Navbar() {
         {/* Main nav */}
         <div className="container mx-auto flex h-[68px] items-center justify-between px-4 lg:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-10 w-10 overflow-hidden rounded-xl shadow-navy ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="relative h-9 w-9 overflow-hidden rounded-xl shadow-navy ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300 shrink-0 bg-primary">
               {logo ? (
-                <Image src={logo.imageUrl} alt="VoyageSync" fill className="object-cover" priority />
+                <Image src={logo.imageUrl} alt="Logo" fill className="object-contain p-0.5" priority />
               ) : (
-                <div className="w-full h-full bg-primary flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center">
                   <Plane className="h-5 w-5 text-white" />
                 </div>
               )}
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-display text-xl font-bold tracking-tight text-primary">
-                Voyage<span className="text-secondary">Sync</span>
-              </span>
-              <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-muted-foreground/70 hidden sm:block">
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground/70 hidden sm:block">
                 Premium Travel
               </span>
             </div>
@@ -85,7 +91,7 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
+            {MAIN_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -95,10 +101,28 @@ export function Navbar() {
                 <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
               </Link>
             ))}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="relative px-4 py-2 text-[13px] font-semibold text-muted-foreground tracking-wide transition-colors hover:text-primary group flex items-center gap-1">
+                  More
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="bg-white">
+                {COMPANY_LINKS.map((link) => (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link href={link.href} className="cursor-pointer">
+                      {link.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             {/* Mobile menu toggle */}
             <Button
               variant="ghost"
@@ -113,12 +137,14 @@ export function Navbar() {
             {/* Desktop auth */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  className="hidden md:flex items-center gap-2 rounded-full h-10 px-5 btn-navy text-sm font-semibold"
-                >
-                  <User className="h-4 w-4" />
-                  <span>Member Login</span>
-                </Button>
+                <Link href="/login">
+                  <Button
+                    className="hidden md:flex items-center gap-2 rounded-[5%] h-10 px-5 btn-navy text-sm font-semibold"
+                  >
+                    <User className="h-4 w-4" />
+                    <span>Login</span>
+                  </Button>
+                </Link>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56 rounded-2xl p-2 mt-3 shadow-luxury-lg border border-border">
                 <DropdownMenuItem asChild className="rounded-xl py-3 cursor-pointer font-semibold hover:bg-primary/5">
@@ -171,15 +197,29 @@ export function Navbar() {
           )}
         >
           <div className="flex items-center justify-between p-5 border-b">
-            <span className="font-display text-lg font-bold text-primary">
-              Voyage<span className="text-secondary">Sync</span>
-            </span>
+            <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-primary shrink-0">
+              {logo ? (
+                <Image src={logo.imageUrl} alt="Logo" fill className="object-contain p-0.5" />
+              ) : (
+                <Plane className="h-4 w-4 text-white m-auto mt-2" />
+              )}
+            </div>
             <Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)}>
               <X className="h-5 w-5" />
             </Button>
           </div>
           <nav className="flex-1 p-4 space-y-1">
-            {NAV_LINKS.map((link) => (
+            {MAIN_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+              >
+                {link.label}
+              </Link>
+            ))}
+            {COMPANY_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -192,8 +232,8 @@ export function Navbar() {
           </nav>
           <div className="p-4 border-t">
             <Link href="/dashboard" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full btn-navy rounded-full font-semibold gap-2">
-                <User className="h-4 w-4" /> Member Login
+              <Button className="w-full btn-navy rounded-[5%] font-semibold gap-2">
+                <User className="h-4 w-4" /> Login
               </Button>
             </Link>
           </div>

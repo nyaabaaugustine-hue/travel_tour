@@ -131,7 +131,7 @@ export default function DashboardPage() {
                   <Star className="h-5 w-5 text-secondary" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-white text-lg leading-snug">Upgrade to Sync Pro</h3>
+                  <h3 className="font-display font-bold text-white text-lg leading-snug">Upgrade to Premium</h3>
                   <p className="text-white/50 text-xs mt-1.5 leading-relaxed">
                     Zero cancel fees, seat upgrades, and priority lounge access on every flight.
                   </p>
