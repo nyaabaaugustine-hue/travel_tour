@@ -15,7 +15,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[600px] w-full overflow-hidden">
+        <section className="relative h-[650px] w-full overflow-hidden">
           {heroImage?.imageUrl && (
             <Image
               src={heroImage.imageUrl}
@@ -27,17 +27,17 @@ export default function Home() {
             />
           )}
           <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-            <div className="w-full max-w-5xl space-y-8">
+            <div className="w-full max-w-7xl space-y-10">
               <div className="text-center space-y-4">
-                <h1 className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-6xl drop-shadow-lg">
+                <h1 className="font-headline text-5xl font-extrabold tracking-tight text-white sm:text-7xl drop-shadow-lg">
                   Synchronizing Your Travels Effortlessly
                 </h1>
-                <p className="text-lg text-white/90 font-medium sm:text-xl drop-shadow-md">
-                  Discover the best flight deals across 500+ airlines worldwide.
+                <p className="text-xl text-white/90 font-medium sm:text-2xl drop-shadow-md max-w-3xl mx-auto">
+                  Discover the best flight deals across 500+ airlines worldwide with real-time price synchronization.
                 </p>
               </div>
               
-              <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8">
+              <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-6 md:p-10 border border-white/20">
                 <FlightSearchForm />
               </div>
             </div>
@@ -45,65 +45,67 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="container mx-auto py-20 px-4">
+        <section className="container mx-auto py-24 px-4">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="font-headline text-3xl font-bold">Why Choose VoyageSync?</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="font-headline text-4xl font-bold tracking-tight">Why Choose VoyageSync?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               We provide a seamless booking experience backed by world-class technology and customer support.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <FeatureCard 
-              icon={<Plane className="h-6 w-6 text-primary" />}
+              icon={<Plane className="h-8 w-8 text-primary" />}
               title="Global Reach"
-              description="Access to millions of flights worldwide from hundreds of carriers."
+              description="Access to millions of flights worldwide from hundreds of carriers including low-cost and major airlines."
             />
             <FeatureCard 
-              icon={<ShieldCheck className="h-6 w-6 text-primary" />}
+              icon={<ShieldCheck className="h-8 w-8 text-primary" />}
               title="Secure Booking"
-              description="Your data is protected with enterprise-grade encryption and security."
+              description="Your data is protected with enterprise-grade AES-256 encryption and PCI-compliant processing."
             />
             <FeatureCard 
-              icon={<CreditCard className="h-6 w-6 text-primary" />}
+              icon={<CreditCard className="h-8 w-8 text-primary" />}
               title="Flexible Payments"
-              description="Pay your way with multiple payment options including Stripe and more."
+              description="Pay your way with multiple payment options including credit cards, digital wallets, and more."
             />
             <FeatureCard 
-              icon={<Clock className="h-6 w-6 text-primary" />}
+              icon={<Clock className="h-8 w-8 text-primary" />}
               title="Real-time Updates"
-              description="Get instant notifications on price changes and flight statuses."
+              description="Get instant notifications on price changes, flight statuses, and gate assignments automatically."
             />
           </div>
         </section>
 
         {/* Popular Destinations */}
-        <section className="bg-muted/30 py-20">
+        <section className="bg-muted/30 py-24">
           <div className="container mx-auto px-4">
-            <div className="flex justify-between items-end mb-10">
+            <div className="flex justify-between items-end mb-12">
               <div className="space-y-2">
-                <h2 className="font-headline text-3xl font-bold">Popular Destinations</h2>
-                <p className="text-muted-foreground">Trending places to visit this season.</p>
+                <h2 className="font-headline text-3xl font-bold tracking-tight">Popular Destinations</h2>
+                <p className="text-muted-foreground text-lg">Trending places to visit this season.</p>
               </div>
-              <Link href="/destinations" className="text-primary font-bold hover:underline">View All</Link>
+              <Link href="/destinations" className="text-primary font-bold hover:underline flex items-center gap-1">
+                View All Destinations
+              </Link>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {PlaceHolderImages.filter(img => img.id.startsWith('dest-')).slice(0, 3).map((dest) => (
                 <Link href="/destinations" key={dest.id}>
-                  <Card className="overflow-hidden group cursor-pointer hover:shadow-lg transition-all">
-                    <div className="relative h-64">
+                  <Card className="overflow-hidden group cursor-pointer hover:shadow-2xl transition-all border-none">
+                    <div className="relative h-80">
                       <Image 
                         src={dest.imageUrl} 
                         alt={dest.description} 
                         fill 
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                         data-ai-hint={dest.imageHint}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4">
-                        <h3 className="text-white font-bold text-xl uppercase">{dest.id.split('-')[1]}</h3>
-                        <p className="text-white/80 text-sm">Flights starting from $299</p>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h3 className="text-white font-bold text-2xl uppercase tracking-tight">{dest.id.split('-')[1]}</h3>
+                        <p className="text-white/80 text-sm font-medium">Flights starting from $299</p>
                       </div>
                     </div>
                   </Card>
@@ -114,44 +116,47 @@ export default function Home() {
         </section>
       </main>
       
-      <footer className="bg-white border-t py-12">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
+      <footer className="bg-white border-t py-16">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <PlaneTakeoff className="h-6 w-6 text-primary" />
-              <span className="font-headline text-xl font-bold text-primary">VoyageSync</span>
+              <PlaneTakeoff className="h-8 w-8 text-primary" />
+              <span className="font-headline text-2xl font-bold text-primary tracking-tight">VoyageSync</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Your one-stop destination for global flight bookings and travel management.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Your one-stop destination for global flight bookings and travel management. Synchronizing your world, one journey at a time.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Support</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Help Center</li>
-              <li>Contact Us</li>
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
+            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground">Support</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="hover:text-primary transition-colors cursor-pointer">Help Center</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Contact Us</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Terms of Service</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Discover</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/destinations">Destinations</Link></li>
-              <li><Link href="/flights">Airlines</Link></li>
-              <li><Link href="/deals">Special Deals</Link></li>
-              <li>Travel Guides</li>
+            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground">Discover</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li><Link href="/destinations" className="hover:text-primary transition-colors">Destinations</Link></li>
+              <li><Link href="/flights" className="hover:text-primary transition-colors">Airlines</Link></li>
+              <li><Link href="/deals" className="hover:text-primary transition-colors">Special Deals</Link></li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Travel Guides</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Connect</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Twitter</li>
-              <li>Instagram</li>
-              <li>LinkedIn</li>
-              <li>Facebook</li>
+            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground">Connect</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="hover:text-primary transition-colors cursor-pointer">Twitter</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Instagram</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">LinkedIn</li>
+              <li className="hover:text-primary transition-colors cursor-pointer">Facebook</li>
             </ul>
           </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16 pt-8 border-t text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} VoyageSync Inc. All rights reserved.
         </div>
       </footer>
     </div>
@@ -162,10 +167,10 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
   return (
     <Card className="border-none shadow-none bg-transparent">
       <CardContent className="p-0 space-y-4">
-        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+        <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center">
           {icon}
         </div>
-        <h3 className="font-bold text-lg">{title}</h3>
+        <h3 className="font-bold text-xl tracking-tight">{title}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
       </CardContent>
     </Card>
