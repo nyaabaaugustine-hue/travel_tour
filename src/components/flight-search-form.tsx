@@ -41,11 +41,11 @@ export function FlightSearchForm() {
       <div className="md:col-span-2 space-y-2 relative">
         <Label htmlFor="origin" className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">From</Label>
         <div className="relative">
-          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary" />
           <Input 
             id="origin"
-            placeholder="Origin (e.g. NYC)" 
-            className="pl-10 h-14 bg-white border-2 focus:border-primary/50 transition-all rounded-xl"
+            placeholder="Origin (e.g. ACC)" 
+            className="pl-10 h-14 bg-white border-2 focus:border-primary/50 transition-all rounded-xl shadow-sm"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
             required
@@ -57,11 +57,11 @@ export function FlightSearchForm() {
       <div className="md:col-span-2 space-y-2 relative">
         <Label htmlFor="destination" className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">To</Label>
         <div className="relative">
-          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary" />
           <Input 
             id="destination"
-            placeholder="Destination (e.g. LON)" 
-            className="pl-10 h-14 bg-white border-2 focus:border-primary/50 transition-all rounded-xl"
+            placeholder="Destination (e.g. LHR)" 
+            className="pl-10 h-14 bg-white border-2 focus:border-primary/50 transition-all rounded-xl shadow-sm"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             required
@@ -70,14 +70,14 @@ export function FlightSearchForm() {
             type="button"
             variant="outline" 
             size="icon" 
-            className="absolute -left-5 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white border-2 shadow-sm md:flex hidden z-10 hover:bg-muted"
+            className="absolute -left-5 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white border-2 shadow-sm md:flex hidden z-10 hover:bg-muted border-primary/20"
             onClick={() => {
               const temp = origin;
               setOrigin(destination);
               setDestination(temp);
             }}
           >
-            <ArrowRightLeft className="h-4 w-4 text-primary" />
+            <ArrowRightLeft className="h-3 w-3 text-primary" />
           </Button>
         </div>
       </div>
@@ -90,7 +90,7 @@ export function FlightSearchForm() {
             <Button
               variant={"outline"}
               className={cn(
-                "w-full h-14 justify-start text-left font-normal bg-white border-2 rounded-xl focus:border-primary/50",
+                "w-full h-14 justify-start text-left font-normal bg-white border-2 rounded-xl focus:border-primary/50 shadow-sm",
                 !departureDate && "text-muted-foreground"
               )}
             >
@@ -112,13 +112,13 @@ export function FlightSearchForm() {
 
       {/* Return Date */}
       <div className="md:col-span-2 space-y-2">
-        <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Return (Optional)</Label>
+        <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Return</Label>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               variant={"outline"}
               className={cn(
-                "w-full h-14 justify-start text-left font-normal bg-white border-2 rounded-xl focus:border-primary/50",
+                "w-full h-14 justify-start text-left font-normal bg-white border-2 rounded-xl focus:border-primary/50 shadow-sm",
                 !returnDate && "text-muted-foreground"
               )}
             >
@@ -140,9 +140,9 @@ export function FlightSearchForm() {
 
       {/* Passengers */}
       <div className="md:col-span-2 space-y-2">
-        <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Passengers</Label>
+        <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground ml-1">Travelers</Label>
         <Select value={passengers} onValueChange={setPassengers}>
-          <SelectTrigger className="h-14 bg-white border-2 rounded-xl focus:border-primary/50">
+          <SelectTrigger className="h-14 bg-white border-2 rounded-xl focus:border-primary/50 shadow-sm">
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-primary" />
               <SelectValue />
@@ -159,7 +159,7 @@ export function FlightSearchForm() {
 
       {/* Search Button */}
       <div className="md:col-span-2">
-        <Button type="submit" className="w-full h-14 font-black text-lg shadow-xl shadow-secondary/20 bg-secondary hover:bg-secondary/90 rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98]">
+        <Button type="submit" className="w-full h-14 font-black text-lg shadow-xl shadow-primary/20 bg-primary hover:bg-primary/90 text-white rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98]">
           <Search className="mr-2 h-5 w-5" /> Search
         </Button>
       </div>
