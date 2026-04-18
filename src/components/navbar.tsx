@@ -50,8 +50,12 @@ export function Navbar() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>My Bookings</DropdownMenuItem>
-              <DropdownMenuItem>Profile Settings</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard" className="w-full">My Dashboard</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard" className="w-full">My Bookings</Link>
+              </DropdownMenuItem>
               <DropdownMenuItem className="text-destructive">Log Out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

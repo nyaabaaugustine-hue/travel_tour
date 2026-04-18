@@ -1,9 +1,11 @@
+
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { FlightSearchForm } from "@/components/flight-search-form";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent } from "@/components/ui/card";
 import { Plane, ShieldCheck, CreditCard, Clock, PlaneTakeoff } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-travel");
@@ -83,26 +85,29 @@ export default function Home() {
                 <h2 className="font-headline text-3xl font-bold">Popular Destinations</h2>
                 <p className="text-muted-foreground">Trending places to visit this season.</p>
               </div>
+              <Link href="/destinations" className="text-primary font-bold hover:underline">View All</Link>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {PlaceHolderImages.filter(img => img.id.startsWith('dest-')).map((dest) => (
-                <Card key={dest.id} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-all">
-                  <div className="relative h-64">
-                    <Image 
-                      src={dest.imageUrl} 
-                      alt={dest.description} 
-                      fill 
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      data-ai-hint={dest.imageHint}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <h3 className="text-white font-bold text-xl">{dest.id.split('-')[1].toUpperCase()}</h3>
-                      <p className="text-white/80 text-sm">Flights starting from $299</p>
+              {PlaceHolderImages.filter(img => img.id.startsWith('dest-')).slice(0, 3).map((dest) => (
+                <Link href="/destinations" key={dest.id}>
+                  <Card className="overflow-hidden group cursor-pointer hover:shadow-lg transition-all">
+                    <div className="relative h-64">
+                      <Image 
+                        src={dest.imageUrl} 
+                        alt={dest.description} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        data-ai-hint={dest.imageHint}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute bottom-4 left-4">
+                        <h3 className="text-white font-bold text-xl uppercase">{dest.id.split('-')[1]}</h3>
+                        <p className="text-white/80 text-sm">Flights starting from $299</p>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -132,9 +137,9 @@ export default function Home() {
           <div>
             <h4 className="font-bold mb-4">Discover</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Destinations</li>
-              <li>Airlines</li>
-              <li>Hotels</li>
+              <li><Link href="/destinations">Destinations</Link></li>
+              <li><Link href="/flights">Airlines</Link></li>
+              <li><Link href="/deals">Special Deals</Link></li>
               <li>Travel Guides</li>
             </ul>
           </div>

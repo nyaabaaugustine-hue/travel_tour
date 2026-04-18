@@ -24,6 +24,24 @@
       "description": "Big Ben and Palace of Westminster",
       "imageUrl": "https://picsum.photos/seed/london/600/400",
       "imageHint": "london bigben"
+    },
+    {
+      "id": "dest-newyork",
+      "description": "Manhattan skyline at night",
+      "imageUrl": "https://picsum.photos/seed/nyc/600/400",
+      "imageHint": "manhattan skyline"
+    },
+    {
+      "id": "dest-sydney",
+      "description": "Sydney Opera House",
+      "imageUrl": "https://picsum.photos/seed/sydney/600/400",
+      "imageHint": "sydney opera"
+    },
+    {
+      "id": "dest-dubai",
+      "description": "Burj Khalifa at night",
+      "imageUrl": "https://picsum.photos/seed/dubai/600/400",
+      "imageHint": "dubai burjkhalifa"
     }
   ]
 }
