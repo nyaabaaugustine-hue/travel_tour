@@ -3,8 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { User, Menu, X, ChevronDown, Globe, Phone, Plane } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  User, Menu, X, ChevronDown, Globe, Phone, Plane,
+  Bell, Ticket, Home, Map, Tag, Shield, Gift, Info,
+  Mail, ChevronRight, Heart
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import {
@@ -16,30 +22,44 @@ import {
 import { cn } from "@/lib/utils";
 
 const MAIN_LINKS = [
-  { label: "Find Flights",    href: "/flights" },
-  { label: "Destinations",   href: "/destinations" },
-  { label: "Special Deals",  href: "/deals" },
-  { label: "Insurance", href: "/insurance" },
-  { label: "Rewards", href: "/loyalty" },
+  { label: "Flights",       href: "/flights",      icon: <Plane className="h-4 w-4" /> },
+  { label: "Destinations",  href: "/destinations", icon: <Map className="h-4 w-4" /> },
+  { label: "Deals",         href: "/deals",        icon: <Tag className="h-4 w-4" /> },
+  { label: "Insurance",     href: "/insurance",    icon: <Shield className="h-4 w-4" /> },
+  { label: "Rewards",       href: "/loyalty",      icon: <Gift className="h-4 w-4" /> },
 ];
 
-const COMPANY_LINKS = [
-  { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Insurance", href: "/insurance" },
-  { label: "Loyalty", href: "/loyalty" },
+const MORE_LINKS = [
+  { label: "About Us",   href: "/about",   icon: <Info className="h-4 w-4" /> },
+  { label: "Contact",    href: "/contact", icon: <Mail className="h-4 w-4" /> },
 ];
+
+const UNREAD_NOTIFS = 3; // demo unread count
 
 export function Navbar() {
   const logo = PlaceHolderImages.find(img => img.id === "business-logo");
-  const [scrolled, setScrolled]   = useState(false);
+  const pathname = usePathname();
+  const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen]     = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // lock body scroll when drawer is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
     <>
@@ -51,7 +71,7 @@ export function Navbar() {
             : "bg-white/80 backdrop-blur-md border-b border-border/60"
         )}
       >
-        {/* Top utility bar */}
+        {/* Top utility bar — desktop only */}
         <div className="hidden lg:flex items-center justify-between px-8 py-2 border-b border-border/40 text-[11px] font-medium text-muted-foreground bg-[hsl(var(--cream-dark))]/60">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5">
@@ -63,17 +83,16 @@ export function Navbar() {
           <div className="flex items-center gap-6">
             <span>Africa&apos;s Premier Travel Platform</span>
             <span className="opacity-40">|</span>
-            <span className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
-              <Globe className="h-3 w-3" /> EN / USD <ChevronDown className="h-2.5 w-2.5" />
-            </span>
+            <LanguageSwitcher />
           </div>
         </div>
 
-        {/* Main nav */}
-        <div className="container mx-auto flex h-[68px] items-center justify-between px-4 lg:px-8">
+        {/* Main nav row */}
+        <div className="container mx-auto flex h-[60px] md:h-[68px] items-center justify-between px-3 md:px-4 lg:px-8 gap-2">
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative h-9 w-9 overflow-hidden rounded-xl shadow-navy ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300 shrink-0 bg-primary">
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <div className="relative h-8 w-8 md:h-9 md:w-9 overflow-hidden rounded-xl shadow-navy ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300 bg-primary">
               {logo ? (
                 <Image src={logo.imageUrl} alt="Logo" fill className="object-contain p-0.5" priority />
               ) : (
@@ -82,36 +101,40 @@ export function Navbar() {
                 </div>
               )}
             </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground/70 hidden sm:block">
-                Premium Travel
-              </span>
-            </div>
+            <span className="hidden sm:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground/70">
+              Premium Travel
+            </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop nav links */}
+          <nav className="hidden lg:flex items-center gap-0.5 flex-1 justify-center">
             {MAIN_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative px-4 py-2 text-[13px] font-semibold text-muted-foreground tracking-wide transition-colors hover:text-primary group"
+                className={cn(
+                  "relative px-3 xl:px-4 py-2 text-[13px] font-semibold tracking-wide transition-colors group",
+                  isActive(link.href) ? "text-primary" : "text-muted-foreground hover:text-primary"
+                )}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
+                <span className={cn(
+                  "absolute bottom-0 left-3 xl:left-4 right-3 xl:right-4 h-[2px] bg-secondary rounded-full transition-transform duration-300",
+                  isActive(link.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                )} />
               </Link>
             ))}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="relative px-4 py-2 text-[13px] font-semibold text-muted-foreground tracking-wide transition-colors hover:text-primary group flex items-center gap-1">
-                  More
-                  <ChevronDown className="h-3 w-3" />
+                <button className="relative px-3 xl:px-4 py-2 text-[13px] font-semibold text-muted-foreground tracking-wide transition-colors hover:text-primary flex items-center gap-1">
+                  More <ChevronDown className="h-3 w-3" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="bg-white">
-                {COMPANY_LINKS.map((link) => (
-                  <DropdownMenuItem key={link.href} asChild>
-                    <Link href={link.href} className="cursor-pointer">
+              <DropdownMenuContent align="start" className="bg-white rounded-2xl p-2 shadow-luxury min-w-[160px]">
+                {MORE_LINKS.map((link) => (
+                  <DropdownMenuItem key={link.href} asChild className="rounded-xl">
+                    <Link href={link.href} className="cursor-pointer flex items-center gap-2 px-3 py-2">
+                      <span className="text-primary">{link.icon}</span>
                       {link.label}
                     </Link>
                   </DropdownMenuItem>
@@ -121,121 +144,200 @@ export function Navbar() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-            {/* Mobile menu toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden h-9 w-9"
+          <div className="flex items-center gap-1.5 shrink-0">
+            {/* Notification bell — mobile */}
+            <Link href="/dashboard" className="relative lg:hidden p-2 rounded-xl hover:bg-primary/5 transition-colors">
+              <Bell className="h-5 w-5 text-muted-foreground" />
+              {UNREAD_NOTIFS > 0 && (
+                <span className="absolute top-1 right-1 h-4 w-4 bg-red-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">
+                  {UNREAD_NOTIFS}
+                </span>
+              )}
+            </Link>
+
+            {/* Hamburger */}
+            <button
+              className="lg:hidden h-9 w-9 flex items-center justify-center rounded-xl hover:bg-primary/5 transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+              <div className="relative w-5 h-4 flex flex-col justify-between">
+                <span className={cn(
+                  "block h-0.5 w-full bg-foreground rounded-full transition-all duration-300",
+                  mobileOpen && "rotate-45 translate-y-[7px]"
+                )} />
+                <span className={cn(
+                  "block h-0.5 w-full bg-foreground rounded-full transition-all duration-300",
+                  mobileOpen && "opacity-0 scale-x-0"
+                )} />
+                <span className={cn(
+                  "block h-0.5 w-full bg-foreground rounded-full transition-all duration-300",
+                  mobileOpen && "-rotate-45 -translate-y-[7px]"
+                )} />
+              </div>
+            </button>
 
-            {/* Desktop auth */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Link href="/login">
-                  <Button
-                    className="hidden md:flex items-center gap-2 rounded-[5%] h-10 px-5 btn-navy text-sm font-semibold"
-                  >
-                    <User className="h-4 w-4" />
-                    <span>Login</span>
-                  </Button>
-                </Link>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 rounded-2xl p-2 mt-3 shadow-luxury-lg border border-border">
-                <DropdownMenuItem asChild className="rounded-xl py-3 cursor-pointer font-semibold hover:bg-primary/5">
-                  <Link href="/dashboard" className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                      <User className="h-4 w-4" />
-                    </div>
-                    My Dashboard
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild className="rounded-xl py-3 cursor-pointer font-semibold hover:bg-primary/5">
-                  <Link href="/dashboard" className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
-                      <Plane className="h-4 w-4" />
-                    </div>
-                    My Bookings
-                  </Link>
-                </DropdownMenuItem>
-                <div className="my-1.5 border-t border-border" />
-                <DropdownMenuItem className="text-destructive font-semibold rounded-xl py-3 cursor-pointer hover:bg-destructive/5">
-                  Log Out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Desktop: Language + Login */}
+            <div className="hidden lg:flex items-center gap-2">
+              <Link href="/dashboard" className="relative p-2 rounded-xl hover:bg-primary/5 transition-colors">
+                <Bell className="h-5 w-5 text-muted-foreground" />
+                {UNREAD_NOTIFS > 0 && (
+                  <span className="absolute top-1 right-1 h-4 w-4 bg-red-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">
+                    {UNREAD_NOTIFS}
+                  </span>
+                )}
+              </Link>
+              <Link href="/login">
+                <Button className="rounded-xl h-9 px-5 btn-navy text-sm font-semibold gap-2">
+                  <User className="h-4 w-4" /> Login
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile drawer */}
-      <div
-        className={cn(
-          "fixed inset-0 z-40 lg:hidden transition-all duration-300",
-          mobileOpen ? "pointer-events-auto" : "pointer-events-none"
-        )}
-      >
+      {/* ── Mobile slide-in drawer ── */}
+      <div className={cn(
+        "fixed inset-0 z-50 lg:hidden",
+        mobileOpen ? "pointer-events-auto" : "pointer-events-none"
+      )}>
         {/* Backdrop */}
         <div
           className={cn(
-            "absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300",
+            "absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300",
             mobileOpen ? "opacity-100" : "opacity-0"
           )}
           onClick={() => setMobileOpen(false)}
         />
 
-        {/* Drawer */}
-        <div
-          className={cn(
-            "absolute top-0 right-0 h-full w-72 bg-white shadow-luxury-lg transition-transform duration-300 ease-out flex flex-col",
-            mobileOpen ? "translate-x-0" : "translate-x-full"
-          )}
-        >
-          <div className="flex items-center justify-between p-5 border-b">
-            <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-primary shrink-0">
-              {logo ? (
-                <Image src={logo.imageUrl} alt="Logo" fill className="object-contain p-0.5" />
-              ) : (
-                <Plane className="h-4 w-4 text-white m-auto mt-2" />
-              )}
+        {/* Drawer panel */}
+        <div className={cn(
+          "absolute top-0 right-0 h-full w-[85vw] max-w-[320px] bg-white flex flex-col transition-transform duration-300 ease-[cubic-bezier(.32,.72,0,1)] shadow-2xl",
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        )}>
+
+          {/* Drawer header */}
+          <div className="flex items-center justify-between px-5 py-4 border-b bg-gradient-to-r from-primary to-[hsl(215,55%,30%)]">
+            <div className="flex items-center gap-2.5">
+              <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-white/20 ring-1 ring-white/30 shrink-0">
+                {logo ? (
+                  <Image src={logo.imageUrl} alt="Logo" fill className="object-contain p-0.5" />
+                ) : (
+                  <Plane className="h-4 w-4 text-white m-auto mt-2" />
+                )}
+              </div>
+              <div>
+                <p className="text-white text-sm font-bold leading-none">Premium Travel</p>
+                <p className="text-white/60 text-[10px] mt-0.5">Africa&apos;s #1 Platform</p>
+              </div>
             </div>
-            <Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)}>
-              <X className="h-5 w-5" />
-            </Button>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+            >
+              <X className="h-4 w-4 text-white" />
+            </button>
           </div>
-          <nav className="flex-1 p-4 space-y-1">
-            {MAIN_LINKS.map((link) => (
+
+          {/* User quick-access */}
+          <Link
+            href="/dashboard"
+            onClick={() => setMobileOpen(false)}
+            className="mx-4 mt-4 flex items-center gap-3 bg-primary/5 border border-primary/10 rounded-2xl p-3 hover:bg-primary/10 transition-colors"
+          >
+            <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center shrink-0">
+              <User className="h-5 w-5 text-white" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-bold text-primary truncate">Kwame Mensah</p>
+              <p className="text-xs text-muted-foreground truncate">Gold Member · 45,200 miles</p>
+            </div>
+            <div className="flex items-center gap-1">
+              {UNREAD_NOTIFS > 0 && (
+                <Badge className="bg-red-500 text-white border-none text-[9px] font-black px-1.5 py-0.5">
+                  {UNREAD_NOTIFS}
+                </Badge>
+              )}
+              <ChevronRight className="h-4 w-4 text-primary/50" />
+            </div>
+          </Link>
+
+          {/* Main navigation */}
+          <div className="flex-1 overflow-y-auto px-4 pt-3 pb-2">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 px-2 mb-2">Explore</p>
+            <nav className="space-y-0.5 mb-4">
+              {MAIN_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-sm transition-all",
+                    isActive(link.href)
+                      ? "bg-primary text-white shadow-navy"
+                      : "text-foreground hover:bg-primary/5 hover:text-primary"
+                  )}
+                >
+                  <span className={cn(
+                    "w-8 h-8 rounded-lg flex items-center justify-center shrink-0",
+                    isActive(link.href) ? "bg-white/20" : "bg-muted"
+                  )}>
+                    {link.icon}
+                  </span>
+                  <span className="flex-1">{link.label}</span>
+                  {link.href === "/deals" && (
+                    <Badge className="bg-red-500 text-white border-none text-[9px] font-black">HOT</Badge>
+                  )}
+                  {link.href === "/loyalty" && (
+                    <Badge className="bg-secondary text-primary border-none text-[9px] font-black">NEW</Badge>
+                  )}
+                </Link>
+              ))}
+            </nav>
+
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 px-2 mb-2">Company</p>
+            <nav className="space-y-0.5 mb-4">
+              {MORE_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-all"
+                >
+                  <span className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                    {link.icon}
+                  </span>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Promo banner */}
+            <div className="bg-gradient-to-br from-primary to-[hsl(215,55%,30%)] rounded-2xl p-4 mb-3">
+              <p className="text-white text-xs font-bold mb-1">✈ Flash Sale Today</p>
+              <p className="text-white/70 text-[11px] leading-relaxed">Flights to London from $299. Limited seats available.</p>
               <Link
-                key={link.href}
-                href={link.href}
+                href="/deals"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
+                className="inline-flex items-center gap-1 mt-2 text-secondary text-[11px] font-bold"
               >
-                {link.label}
+                View Deals <ChevronRight className="h-3 w-3" />
               </Link>
-            ))}
-            {COMPANY_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="p-4 border-t">
-            <Link href="/dashboard" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full btn-navy rounded-[5%] font-semibold gap-2">
-                <User className="h-4 w-4" /> Login
+            </div>
+          </div>
+
+          {/* Bottom actions */}
+          <div className="px-4 py-4 border-t space-y-2 bg-muted/20">
+            <Link href="/login" onClick={() => setMobileOpen(false)} className="block">
+              <Button className="w-full btn-gold rounded-xl font-bold gap-2 h-11 text-sm">
+                <User className="h-4 w-4" /> Login / Sign Up
               </Button>
             </Link>
+            <div className="flex items-center justify-center gap-1 text-[10px] text-muted-foreground/60 pt-1">
+              <Phone className="h-3 w-3" />
+              <span>+233 30 260 0000 · 24/7 Support</span>
+            </div>
           </div>
         </div>
       </div>
