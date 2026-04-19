@@ -26,7 +26,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ═══ HERO ═══ */}
-        <section className="relative min-h-[780px] w-full overflow-hidden flex items-center">
+        <section className="relative min-h-screen w-full overflow-hidden flex items-center">
           {/* Hero Slider Background */}
           <HeroSlider
             slides={[
@@ -44,10 +44,10 @@ export default function Home() {
           <div className="absolute top-24 right-1/4 w-72 h-72 bg-secondary/10 rounded-[5%] blur-3xl pointer-events-none z-10" />
           <div className="absolute bottom-0 left-0 w-96 h-64 bg-primary/40 rounded-[5%] blur-3xl pointer-events-none z-10" />
 
-          <div className="container relative z-10 mx-auto px-4 lg:px-8 py-24">
+          <div className="container relative z-10 mx-auto px-4 lg:px-8 py-16">
             <div className="max-w-7xl mx-auto">
               {/* Hero copy */}
-              <div className="max-w-2xl space-y-7 mb-12 fade-up">
+              <div className="max-w-2xl space-y-4 mb-8 fade-up">
                 {/* Africa flag accent */}
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1">
@@ -60,14 +60,14 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-[1.05] drop-shadow-2xl">
+                <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-[1.05] drop-shadow-2xl">
                   Fly with{" "}
                   <em className="not-italic gradient-text">Precision.</em>
                   <br />Travel with{" "}
                   <em className="not-italic gradient-text">Purpose.</em>
                 </h1>
 
-                <p className="text-lg text-white/75 font-light leading-relaxed max-w-xl">
+                <p className="text-base text-white/75 font-light leading-relaxed max-w-xl">
                   Real-time pricing across 500+ global airlines. Discover the world from the heart of West Africa — with elegance, intelligence, and care.
                 </p>
 

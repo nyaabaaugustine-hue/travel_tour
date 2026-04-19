@@ -53,8 +53,7 @@ export function FlightSearchForm() {
   };
 
   return (
-    // Outer wrapper: position relative so the invisible overlay can sit on top
-    <div className="space-y-5 relative">
+    <div className="space-y-3 relative">
 
       {/* ── Invisible click-catcher overlay ──────────────────────────────────
           Sits above the entire widget. Pointer-events only on the overlay,
@@ -84,7 +83,7 @@ export function FlightSearchForm() {
             type="button"
             onClick={() => setTripType(type)}
             className={cn(
-              "px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200",
+              "px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200",
               tripType === type
                 ? "bg-white text-primary shadow-sm"
                 : "text-white/80 hover:text-white"
@@ -95,7 +94,7 @@ export function FlightSearchForm() {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-2">
         {/* Main row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
           {/* Origin */}
@@ -105,7 +104,7 @@ export function FlightSearchForm() {
               <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-secondary" />
               <Input
                 placeholder="City or airport"
-                className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-[52px]"
+                className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-11"
                 value={origin}
                 onChange={(e) => setOrigin(e.target.value)}
               />
@@ -131,7 +130,7 @@ export function FlightSearchForm() {
               <Plane className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-secondary rotate-45" />
               <Input
                 placeholder="City or airport"
-                className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-[52px]"
+                className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-11"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
               />
@@ -144,11 +143,11 @@ export function FlightSearchForm() {
             <Popover>
               <PopoverTrigger asChild>
                 <Button
-                  variant="outline"
-                  className={cn(
-                    "w-full h-[52px] justify-start text-left bg-white/95 border-transparent hover:bg-white rounded-xl font-medium",
-                    !departureDate && "text-muted-foreground"
-                  )}
+                variant="outline"
+                className={cn(
+                "w-full h-11 justify-start text-left bg-white/95 border-transparent hover:bg-white rounded-xl font-medium",
+                !departureDate && "text-muted-foreground"
+                )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4 text-secondary shrink-0" />
                   <span className="truncate text-sm">
@@ -171,7 +170,7 @@ export function FlightSearchForm() {
                   <Button
                     variant="outline"
                     className={cn(
-                      "w-full h-[52px] justify-start text-left bg-white/95 border-transparent hover:bg-white rounded-xl font-medium",
+                      "w-full h-11 justify-start text-left bg-white/95 border-transparent hover:bg-white rounded-xl font-medium",
                       !returnDate && "text-muted-foreground"
                     )}
                   >
@@ -190,7 +189,7 @@ export function FlightSearchForm() {
             <div className="md:col-span-2 space-y-1.5">
               <Label className="text-xs font-semibold uppercase tracking-widest text-white/70">Travelers</Label>
               <Select value={passengers} onValueChange={setPassengers}>
-                <SelectTrigger className="h-[52px] bg-white/95 border-transparent rounded-xl font-medium">
+                <SelectTrigger className="h-11 bg-white/95 border-transparent rounded-xl font-medium">
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-secondary shrink-0" />
                     <SelectValue />
@@ -210,7 +209,7 @@ export function FlightSearchForm() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-[52px] btn-gold rounded-xl text-sm font-bold tracking-wide shadow-gold gap-2 pulse-glow"
+              className="w-full h-11 btn-gold rounded-xl text-sm font-bold tracking-wide shadow-gold gap-2 pulse-glow"
             >
               {loading
                 ? <Loader2 className="h-4 w-4 animate-spin" />
@@ -221,12 +220,12 @@ export function FlightSearchForm() {
         </div>
 
         {/* Secondary row — Travelers + Cabin class */}
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-2">
           {tripType === "Round Trip" && (
             <div className="col-span-1 md:col-span-3 space-y-1.5">
               <Label className="text-xs font-semibold uppercase tracking-widest text-white/60">Travelers</Label>
               <Select value={passengers} onValueChange={setPassengers}>
-                <SelectTrigger className="h-10 bg-white/80 border-transparent rounded-xl font-medium text-sm">
+                <SelectTrigger className="h-9 bg-white/80 border-transparent rounded-xl font-medium text-sm">
                   <div className="flex items-center gap-2">
                     <Users className="h-3.5 w-3.5 text-secondary shrink-0" />
                     <SelectValue />
@@ -243,7 +242,7 @@ export function FlightSearchForm() {
           <div className="col-span-1 md:col-span-3 space-y-1.5">
             <Label className="text-xs font-semibold uppercase tracking-widest text-white/60">Cabin Class</Label>
             <Select value={cabinClass} onValueChange={setCabinClass}>
-              <SelectTrigger className="h-10 bg-white/80 border-transparent rounded-xl font-medium text-sm">
+              <SelectTrigger className="h-9 bg-white/80 border-transparent rounded-xl font-medium text-sm">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-2xl">
