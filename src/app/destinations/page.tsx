@@ -45,9 +45,9 @@ export default function DestinationsPage() {
           src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533937/74f9a640_aytjpj.jpg"
           alt="Destinations hero"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-50"
         />
-        <div className="absolute inset-0 bg-primary/70" />
+        <div className="absolute inset-0 bg-primary/50" />
         {/* Decorative bg */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />

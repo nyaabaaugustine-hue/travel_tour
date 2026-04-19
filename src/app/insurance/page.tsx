@@ -60,6 +60,13 @@ export default function InsurancePage() {
 
       <main className="flex-1 pt-20">
         <section className="relative bg-primary text-white py-20 overflow-hidden">
+          <Image
+            src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776590152/faces_ukqrpa.jpg"
+            alt="Insurance hero"
+            fill
+            className="object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-primary/50" />
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
           </div>

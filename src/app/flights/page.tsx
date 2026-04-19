@@ -52,9 +52,9 @@ function FlightsContent() {
             src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide7_n8uvln.jpg"
             alt="Flights hero"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-primary/80" />
+          <div className="absolute inset-0 bg-primary/50" />
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
           </div>

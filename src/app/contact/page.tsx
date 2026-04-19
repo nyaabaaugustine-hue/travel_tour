@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +29,13 @@ export default function ContactPage() {
 
       <main className="flex-1 pt-20">
         <section className="relative bg-primary text-white py-20 overflow-hidden">
+          <Image
+            src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533940/4559fb8b_hyckig.jpg"
+            alt="Contact hero"
+            fill
+            className="object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-primary/50" />
           <div className="absolute inset-0 opacity-10 pointer-events-none">
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           </div>

@@ -131,8 +131,8 @@ export function ImageGallery({ images = defaultImages }: ImageGalleryProps) {
             >
               <div className="relative aspect-[16/10] md:aspect-auto md:h-[85vh]">
                 <Image
-                  src={galleryImages[selectedIndex].src}
-                  alt={galleryImages[selectedIndex].alt}
+                  src={images[selectedIndex].src}
+                  alt={images[selectedIndex].alt}
                   fill
                   className="object-contain"
                 />
@@ -140,9 +140,9 @@ export function ImageGallery({ images = defaultImages }: ImageGalleryProps) {
               
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="text-white font-display text-xl md:text-2xl font-bold">
-                  {galleryImages[selectedIndex].alt}
+                  {images[selectedIndex].alt}
                 </h3>
-                <p className="text-white/70">{galleryImages[selectedIndex].location}</p>
+                <p className="text-white/70">{images[selectedIndex].location}</p>
               </div>
 
               <div className="absolute top-1/2 -translate-y-1/2 left-4 z-50 md:hidden">

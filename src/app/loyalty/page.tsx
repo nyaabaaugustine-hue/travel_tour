@@ -58,6 +58,13 @@ export default function LoyaltyPage() {
 
       <main className="flex-1 pt-20">
         <section className="relative bg-primary text-white py-16 overflow-hidden">
+          <Image
+            src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533943/safrica_nu5kez.jpg"
+            alt="Loyalty hero"
+            fill
+            className="object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-primary/50" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>

@@ -48,10 +48,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {/* Force favicon across all browsers — overrides any cached version */}
-        <link rel="icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" type="image/png" sizes="any" />
-        <link rel="shortcut icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" type="image/png" />
-        <link rel="apple-touch-icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" />
-        <link rel="apple-touch-icon-precomposed" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" />
+        <link rel="icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" type="image/png" />
+        <link rel="apple-touch-icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" />
+        <link rel="apple-touch-icon-precomposed" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" />
         <meta property="og:image" content="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" />
         <meta name="msapplication-TileImage" content="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" />
         <meta name="theme-color" content="#2f0877" />

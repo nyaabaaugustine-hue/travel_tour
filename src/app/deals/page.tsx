@@ -173,9 +173,9 @@ export default function DealsPage() {
           src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533937/74f9a640_aytjpj.jpg"
           alt="Deals hero"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-50"
         />
-        <div className="absolute inset-0 bg-primary/70" />
+        <div className="absolute inset-0 bg-primary/50" />
         <div className="absolute top-4 right-4 opacity-5 pointer-events-none">
           <Flame className="h-72 w-72 text-orange-400" />
         </div>
