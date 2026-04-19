@@ -11,13 +11,13 @@ import { Search, MapPin, Compass, ArrowRight, Star, Plane } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
-const DESTINATION_META: Record<string, { price: number; rating: string; desc: string; region: string }> = {
-  accra:    { price: 199, rating: "9.4", desc: "Ghana's vibrant capital, rich in culture and coastline.", region: "West Africa" },
-  lagos:    { price: 219, rating: "8.9", desc: "Africa's mega-city — commerce, art, and electric energy.", region: "West Africa" },
-  nairobi:  { price: 310, rating: "9.1", desc: "Gateway to the Maasai Mara and East Africa's highlands.", region: "East Africa" },
-  cairo:    { price: 345, rating: "9.3", desc: "Timeless civilization along the legendary Nile river.", region: "North Africa" },
-  capetown: { price: 420, rating: "9.6", desc: "Where mountains meet the ocean in spectacular fashion.", region: "Southern Africa" },
-  marrakech: { price: 380, rating: "9.2", desc: "Medinas, spices, and Moorish architecture beyond compare.", region: "North Africa" },
+const DESTINATION_META: Record<string, { price: number; rating: string; desc: string; region: string; image: string; title: string }> = {
+  accra:    { price: 199, rating: "9.4", desc: "Ghana's vibrant capital, rich in culture and coastline.", region: "West Africa", image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533944/accra_h28u9u.jpg", title: "Independence Arch in Accra, Ghana" },
+  lagos:    { price: 219, rating: "8.9", desc: "Africa's mega-city — commerce, art, and electric energy.", region: "West Africa", image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533943/lk_zd9scy.jpg", title: "Lekki-Ikoyi Bridge in Lagos, Nigeria" },
+  nairobi:  { price: 310, rating: "9.1", desc: "Gateway to the Maasai Mara and East Africa's highlands.", region: "East Africa", image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533940/4559fb8b_hyckig.jpg", title: "Nairobi city skyline with national park" },
+  cairo:    { price: 345, rating: "9.3", desc: "Timeless civilization along the legendary Nile river.", region: "North Africa", image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533940/45086c8e_zwtrkb.jpg", title: "Great Pyramids of Giza in Cairo, Egypt" },
+  capetown: { price: 420, rating: "9.6", desc: "Where mountains meet the ocean in spectacular fashion.", region: "Southern Africa", image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533943/safrica_nu5kez.jpg", title: "Table Mountain in Cape Town, South Africa" },
+  casablanca: { price: 299, rating: "8.7", desc: "Explore the wonders of casablanca.", region: "Africa", image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533940/13ed0bd8_tx2gog.jpg", title: "Hassan II Mosque in Casablanca, Morocco" },
 };
 
 const REGIONS = ["All", "West Africa", "East Africa", "North Africa", "Southern Africa"];
@@ -128,11 +128,10 @@ export default function DestinationsPage() {
                   <div className="relative h-64 overflow-hidden">
                     <div className="dest-card-inner absolute inset-0">
                       <Image
-                        src={dest.imageUrl}
-                        alt={dest.description}
+                        src={meta.image}
+                        alt={meta.title}
                         fill
                         className="object-cover"
-                        data-ai-hint={dest.imageHint}
                       />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />

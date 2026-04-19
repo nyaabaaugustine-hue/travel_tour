@@ -201,6 +201,15 @@
   animation: fadeUp .65s ease both;
 }
 
+/* ─── Shimmer for skeleton loaders ─── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
 /* ─── Animated float ─── */
 @keyframes float {
   0%,100% { transform: translateY(0); }

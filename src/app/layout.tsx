@@ -52,8 +52,8 @@ export default function RootLayout({
         <link rel="shortcut icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" type="image/png" />
         <link rel="apple-touch-icon" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" />
         <link rel="apple-touch-icon-precomposed" href="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" />
-        <meta property="og:image" content="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" />
-        <meta name="msapplication-TileImage" content="https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png" />
+        <meta property="og:image" content="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" />
+        <meta name="msapplication-TileImage" content="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png" />
         <meta name="theme-color" content="#2f0877" />
       </head>
       <body className="font-body antialiased selection:bg-primary/20 selection:text-primary" suppressHydrationWarning>

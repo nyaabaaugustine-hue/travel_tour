@@ -13,6 +13,45 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 const TRIP_TYPES = ["Round Trip", "One Way", "Multi-City"];
 
+const AIRPORTS = [
+  { code: "ACC", city: "Accra" },
+  { code: "LOS", city: "Lagos" },
+  { code: "ABJ", city: "Abidjan" },
+  { code: "CMN", city: "Casablanca" },
+  { code: "CAI", city: "Cairo" },
+  { code: "JNB", city: "Johannesburg" },
+  { code: "CPT", city: "Cape Town" },
+  { code: "NBO", city: "Nairobi" },
+  { code: "DKR", city: "Dakar" },
+  { code: "KGL", city: "Kigali" },
+  { code: "MFU", city: "Freetown" },
+  { code: "ADD", city: "Addis Ababa" },
+  { code: "LAD", city: "Luanda" },
+  { code: "NSI", city: "Yaoundé" },
+  { code: "LBV", city: "Libreville" },
+  { code: "KRT", city: "Khartoum" },
+  { code: "TUN", city: "Tunis" },
+  { code: "ALG", city: "Algiers" },
+  { code: "HGA", city: "Hargeisa" },
+  { code: "MRA", city: "Mombasa" },
+  { code: "QUI", city: "Quimper" },
+  { code: "DLA", city: "Douala" },
+  { code: "BKO", city: "Bamako" },
+  { code: "NDR", city: "Niamey" },
+  { code: "OUA", city: "Ouagadougou" },
+  { code: "CPN", city: "Conakry" },
+  { code: "BZV", city: "Bujumbura" },
+  { code: "KBL", city: "Kampala" },
+  { code: "LFW", city: "Lomé" },
+  { code: "SIN", city: "Singapore" },
+  { code: "DXB", city: "Dubai" },
+  { code: "LHR", city: "London" },
+  { code: "CDG", city: "Paris" },
+  { code: "JFK", city: "New York" },
+  { code: "FRA", city: "Frankfurt" },
+  { code: "AMS", city: "Amsterdam" },
+];
+
 export function FlightSearchForm() {
   const router = useRouter();
   const [tripType, setTripType] = useState("Round Trip");
@@ -123,7 +162,12 @@ export function FlightSearchForm() {
                 className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-11"
                 value={origin}
                 onChange={(e) => setOrigin(e.target.value)}
+                list="airports-origin"
+                aria-label="Origin airport or city"
               />
+              <datalist id="airports-origin">
+                {AIRPORTS.map(a => <option key={a.code} value={`${a.code} - ${a.city}`} />)}
+              </datalist>
             </div>
           </div>
 
@@ -148,8 +192,12 @@ export function FlightSearchForm() {
                 placeholder="City or airport"
                 className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-11"
                 value={destination}
-                onChange={(e) => setDestination(e.target.value)}
+                list="airports-dest"
+                aria-label="Destination airport or city"
               />
+              <datalist id="airports-dest">
+                {AIRPORTS.map(a => <option key={a.code} value={`${a.code} - ${a.city}`} />)}
+              </datalist>
             </div>
           </div>
 

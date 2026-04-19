@@ -26,7 +26,7 @@ export function DuffelLinks({ config = {} }: DuffelLinksProps) {
     const baseConfig: DuffelLinksConfig = {
       reference: "traveltour_" + Date.now(),
       logoUrl:
-        "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776535724/aaaaaaa_xu7z9a.png",
+        "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png",
       primaryColor: "#1a4731",
       secondaryColor: "#e09c0b",
       markupAmount: 20,

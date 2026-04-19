@@ -757,35 +757,34 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
               {[
                 {
-                  seed: "news1", category: "Industry",
+                  id: "news1", category: "Industry",
                   date: "March 15, 2024",
                   title: "Smart Search: The Future of African Aviation",
                   excerpt: "How real-time data is revolutionizing the passenger experience across the continent.",
-                  hint: "aviation technology future"
+                  image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide5_jz621t.jpg"
                 },
                 {
-                  seed: "news2", category: "Travel Tips",
+                  id: "news2", category: "Travel Tips",
                   date: "March 12, 2024",
                   title: "How to Travel Sustainably in West Africa",
                   excerpt: "Eco-friendly resorts and practices that support local African communities.",
-                  hint: "nature sustainable travel"
+                  image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533940/4559fb8b_hyckig.jpg"
                 },
                 {
-                  seed: "news3", category: "Awards",
+                  id: "news3", category: "Awards",
                   date: "March 8, 2024",
                   title: "Digital Innovation Award 2024 — Won",
                   excerpt: "Recognized as West Africa's leading travel technology provider.",
-                  hint: "digital award ceremony"
+                  image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide3_tdjtnv.jpg"
                 },
-              ].map(({ seed, category, date, title, excerpt, hint }) => (
-                <article key={seed} className="luxury-card rounded-3xl overflow-hidden group">
+              ].map(({ id, category, date, title, excerpt, image }) => (
+                <article key={id} className="luxury-card rounded-3xl overflow-hidden group">
                   <div className="relative h-56 overflow-hidden">
                     <Image
-                      src={`https://picsum.photos/seed/${seed}/600/400`}
+                      src={image}
                       alt={title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      data-ai-hint={hint}
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/90 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-[5%] backdrop-blur-sm shadow-sm">
