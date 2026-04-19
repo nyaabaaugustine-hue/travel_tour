@@ -6,7 +6,7 @@ import { LanguageProvider } from "@/contexts/language-context";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { GlobalLoader } from "@/components/global-loader";
 
-const FAVICON = "https://res.cloudinary.com/dwsl2ktt2/image/upload/c_thumb,w_200,g_face/v1776535724/aaaaaaa_xu7z9a.png";
+const FAVICON = "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776588814/favicon_hdvq1s.png";
 
 export const metadata: Metadata = {
   title: 'Premium Flight Bookings | Africa\'s Travel Platform',

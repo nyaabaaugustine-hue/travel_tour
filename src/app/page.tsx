@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar";
 import { FlightSearchForm } from "@/components/flight-search-form";
 import { HeroSlider } from "@/components/slider";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ImageGallery } from "@/components/image-gallery";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ShieldCheck, Clock, Star, Globe, Quote, ArrowRight,
@@ -19,6 +20,8 @@ import {
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-travel");
   const logo = PlaceHolderImages.find((img) => img.id === "business-logo");
+
+  const galleryImageCount = 12;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -657,28 +660,28 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               <TestimonialCard
-                name="Kwame Mensah"
-                role="Export Director, Accra"
-                content="The synchronization between routes is perfect. I now manage my travels across Africa and Europe through one seamless platform."
-                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533944/accra_h28u9u.jpg"
+                name="Kwame Asante"
+                role="CEO & Founder"
+                content="20+ years in travel technology, former Google Travel team."
+                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide5_jz621t.jpg"
               />
               <TestimonialCard
-                name="Efua Addo"
-                role="Creative Consultant, Kumasi"
-                content="Beautiful interface and excellent service. The African hospitality truly shines in everything they do — from the app to support."
-                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533940/862344aa_lheq8h.jpg"
+                name="Sarah Mensah"
+                role="Chief Operations Officer"
+                content="Expert in airline partnerships and operations."
+                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide6_lic8kj.jpg"
               />
               <TestimonialCard
-                name="David Okonkwo"
-                role="Business Executive, Lagos"
-                content="Best travel booking experience I've ever had. Fast, reliable, and great customer service."
-                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533943/lk_zd9scy.jpg"
+                name="David Opoku"
+                role="Head of Technology"
+                content="Building scalable booking systems for 10+ years."
+                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide4_qsza8w.jpg"
               />
               <TestimonialCard
                 name="Amara Diallo"
-                role="Tourist, Dakar"
-                content="Made my first Africa trip unforgettable. The deals are real and the service is exceptional."
-                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533937/74f9a640_aytjpj.jpg"
+                role="Head of Customer Experience"
+                content="Passionate about creating memorable journeys."
+                image="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide3_tdjtnv.jpg"
               />
             </div>
           </div>
@@ -805,6 +808,32 @@ export default function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ═══ IMAGE GALLERY ═══ */}
+        <section className="py-28 bg-gradient-to-br from-primary via-primary to-[hsl(var(--navy-deep))] relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-secondary rounded-full blur-[100px]" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full blur-[120px]" />
+          </div>
+          
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-14 gap-6">
+              <div className="space-y-3">
+                <span className="section-line" />
+                <Badge className="bg-secondary/15 text-secondary border-none font-semibold">
+                  Photo Gallery
+                </Badge>
+                <h2 className="font-display text-4xl font-bold text-white">Capture the Moment</h2>
+                <p className="text-white/60">Click any image to view in full screen.</p>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-white/40 text-sm">{galleryImageCount} photos</span>
+              </div>
+            </div>
+
+            <ImageGallery />
           </div>
         </section>
 

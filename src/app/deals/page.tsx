@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -168,6 +169,13 @@ export default function DealsPage() {
 
       {/* Hero */}
       <section className="diagonal-bg text-white py-20 relative overflow-hidden noise-overlay">
+        <Image
+          src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533937/74f9a640_aytjpj.jpg"
+          alt="Deals hero"
+          fill
+          className="object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-primary/70" />
         <div className="absolute top-4 right-4 opacity-5 pointer-events-none">
           <Flame className="h-72 w-72 text-orange-400" />
         </div>
