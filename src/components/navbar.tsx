@@ -87,6 +87,52 @@ export function Navbar() {
           </div>
         </div>
 
+        {/* Scrolling destinations ticker */}
+        <div className="hidden lg:block bg-primary text-white overflow-hidden">
+          <div className="flex animate-scrol text-[11px] font-medium py-1.5 w-max">
+            {[
+              { dest: "Accra", price: "$199", deal: "Round-trip" },
+              { dest: "Lagos", price: "$219", deal: "25% off" },
+              { dest: "London", price: "$399", deal: "Direct" },
+              { dest: "Dubai", price: "$449", deal: "Special" },
+              { dest: "Nairobi", price: "$310", deal: "Safari" },
+              { dest: "Cape Town", price: "$420", deal: "Explore" },
+              { dest: "Paris", price: "$499", deal: "Direct" },
+              { dest: "New York", price: "$599", deal: "Business" },
+              { dest: "Cairo", price: "$345", deal: "Historic" },
+              { dest: "Kumasi", price: "$89", deal: "Local" },
+              { dest: "Dakar", price: "$199", deal: "Beach" },
+              { dest: "Kampala", price: "$289", deal: "Mountain" },
+            ].map((item, i) => (
+              <span key={i} className="flex items-center gap-2 px-5 border-r border-white/20 whitespace-nowrap">
+                <span>{item.dest}</span>
+                <span className="text-secondary font-bold">{item.price}</span>
+                <span className="text-white/50 text-[10px]">{item.deal}</span>
+              </span>
+            ))}
+            {[
+              { dest: "Accra", price: "$199", deal: "Round-trip" },
+              { dest: "Lagos", price: "$219", deal: "25% off" },
+              { dest: "London", price: "$399", deal: "Direct" },
+              { dest: "Dubai", price: "$449", deal: "Special" },
+              { dest: "Nairobi", price: "$310", deal: "Safari" },
+              { dest: "Cape Town", price: "$420", deal: "Explore" },
+              { dest: "Paris", price: "$499", deal: "Direct" },
+              { dest: "New York", price: "$599", deal: "Business" },
+              { dest: "Cairo", price: "$345", deal: "Historic" },
+              { dest: "Kumasi", price: "$89", deal: "Local" },
+              { dest: "Dakar", price: "$199", deal: "Beach" },
+              { dest: "Kampala", price: "$289", deal: "Mountain" },
+            ].map((item, i) => (
+              <span key={`dup-${i}`} className="flex items-center gap-2 px-5 border-r border-white/20 whitespace-nowrap">
+                <span>{item.dest}</span>
+                <span className="text-secondary font-bold">{item.price}</span>
+                <span className="text-white/50 text-[10px]">{item.deal}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* Main nav row */}
         <div className="container mx-auto flex h-[60px] md:h-[68px] items-center justify-between px-3 md:px-4 lg:px-8 gap-2">
 

@@ -258,6 +258,21 @@ input:focus, button:focus-visible, [data-state=open] {
   animation-play-state: paused;
 }
 
+/* ─── Destination ticker scroll ─── */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scrol {
+  animation: ticker 40s linear infinite;
+  width: 200%;
+}
+
+.animate-scrol:hover {
+  animation-play-state: paused;
+}
+
 /* ═══════════════════════════════════════════
    GLOBAL PAGE LOADER — flight across globe
 ═══════════════════════════════════════════ */

@@ -11,25 +11,25 @@ const TEAM = [
     name: "Kwame Asante",
     role: "CEO & Founder",
     bio: "20+ years in travel technology, former Google Travel team.",
-    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide5_jz621t.jpg",
+    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide1_fracqs.jpg",
   },
   {
     name: "Sarah Mensah",
     role: "Chief Operations Officer",
     bio: "Expert in airline partnerships and operations.",
-    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide6_lic8kj.jpg",
+    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide2_x5i3vt.jpg",
   },
   {
     name: "David Opoku",
     role: "Head of Technology",
     bio: "Building scalable booking systems for 10+ years.",
-    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776528497/slide4_qsza8w.jpg",
+    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide3_tdjtnv.jpg",
   },
   {
     name: "Amara Diallo",
     role: "Head of Customer Experience",
     bio: "Passionate about creating memorable journeys.",
-    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776527855/slide3_tdjtnv.jpg",
+    image: "https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776514019/as_cf8py5.jpg",
   },
 ];
 

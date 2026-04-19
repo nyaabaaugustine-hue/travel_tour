@@ -75,6 +75,22 @@ export function FlightSearchForm() {
         </div>
       )}
 
+      {/* Service type tabs */}
+      <div className="flex items-center gap-2 mb-3">
+        <button type="button" className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-white text-sm font-semibold">
+          <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533942/light__flight_zlalfo.svg" alt="Flights" className="h-5 w-5" />
+          Flights
+        </button>
+        <button type="button" className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-white/10 rounded-full text-white/70 text-sm font-semibold transition-colors">
+          <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533942/light__car_fx64s5.svg" alt="Cars" className="h-5 w-5" />
+          Cars
+        </button>
+        <button type="button" className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-white/10 rounded-full text-white/70 text-sm font-semibold transition-colors">
+          <img src="https://res.cloudinary.com/dwsl2ktt2/image/upload/v1776533942/light__bed_bghl3v.svg" alt="Hotels" className="h-5 w-5" />
+          Hotels
+        </button>
+      </div>
+
       {/* Trip type tabs */}
       <div className="flex items-center gap-1 bg-black/10 rounded-full p-1 w-fit">
         {TRIP_TYPES.map(type => (
