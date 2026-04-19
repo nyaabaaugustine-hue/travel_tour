@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
-import { DuffelLinks } from "@/components/duffel-links";
+import { FlightSearchForm } from "@/components/flight-search-form";
 import { HeroSlider } from "@/components/slider";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent } from "@/components/ui/card";
@@ -87,9 +87,9 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Duffel Search Panel */}
+              {/* Search panel */}
               <div className="glass-dark rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
-                <DuffelLinks />
+                <FlightSearchForm />
               </div>
 
               {/* Trust pills */}

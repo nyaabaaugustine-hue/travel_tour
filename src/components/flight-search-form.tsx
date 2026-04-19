@@ -1,8 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { MapPin, Calendar as CalendarIcon, Users, Search, ArrowRightLeft, Plane } from "lucide-react";
+import { MapPin, Calendar as CalendarIcon, Users, Search, ArrowRightLeft, Plane, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -23,22 +22,60 @@ export function FlightSearchForm() {
   const [returnDate, setReturnDate] = useState<Date>();
   const [passengers, setPassengers] = useState("1");
   const [cabinClass, setCabinClass] = useState("economy");
+  const [loading, setLoading] = useState(false);
 
-  const handleSearch = (e: React.FormEvent) => {
+  // Single handler — called by the overlay click OR the Search button submit
+  const openDuffel = async () => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      const res = await fetch("/api/duffel/create-link", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference: `milehigh_${Date.now()}` }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        // fallback: go to /flights page so user sees the error there
+        router.push("/flights");
+      }
+    } catch {
+      router.push("/flights");
+    }
+    // don't setLoading(false) — we're navigating away
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const params = new URLSearchParams({
-      origin,
-      destination,
-      departureDate: departureDate ? format(departureDate, 'yyyy-MM-dd') : '',
-      returnDate: returnDate ? format(returnDate, 'yyyy-MM-dd') : '',
-      passengers,
-      cabinClass
-    });
-    router.push(`/flights?${params.toString()}`);
+    openDuffel();
   };
 
   return (
-    <div className="space-y-5">
+    // Outer wrapper: position relative so the invisible overlay can sit on top
+    <div className="space-y-5 relative">
+
+      {/* ── Invisible click-catcher overlay ──────────────────────────────────
+          Sits above the entire widget. Pointer-events only on the overlay,
+          so the real inputs still look interactive visually.
+          On any click/touch anywhere in the form area → openDuffel().        */}
+      <div
+        onClick={openDuffel}
+        className="absolute inset-0 z-10 cursor-pointer rounded-3xl"
+        aria-label="Open flight booking"
+      />
+
+      {/* Loading spinner shown over the widget while session is being created */}
+      {loading && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center rounded-3xl bg-black/30 backdrop-blur-sm">
+          <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-2xl px-5 py-3 text-white font-semibold text-sm">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Opening secure booking…
+          </div>
+        </div>
+      )}
+
       {/* Trip type tabs */}
       <div className="flex items-center gap-1 bg-black/10 rounded-full p-1 w-fit">
         {TRIP_TYPES.map(type => (
@@ -58,10 +95,10 @@ export function FlightSearchForm() {
         ))}
       </div>
 
-      <form onSubmit={handleSearch} className="space-y-3">
-        {/* Main row — always 12 cols on md+ */}
+      <form onSubmit={handleSubmit} className="space-y-3">
+        {/* Main row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
-          {/* Origin — 3 cols */}
+          {/* Origin */}
           <div className="md:col-span-3 space-y-1.5">
             <Label className="text-xs font-semibold uppercase tracking-widest text-white/70">From</Label>
             <div className="relative">
@@ -71,12 +108,11 @@ export function FlightSearchForm() {
                 className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-[52px]"
                 value={origin}
                 onChange={(e) => setOrigin(e.target.value)}
-                required
               />
             </div>
           </div>
 
-          {/* Swap — 1 col */}
+          {/* Swap */}
           <div className="hidden md:flex md:col-span-1 items-end pb-1 justify-center">
             <Button
               type="button"
@@ -88,7 +124,7 @@ export function FlightSearchForm() {
             </Button>
           </div>
 
-          {/* Destination — 3 cols */}
+          {/* Destination */}
           <div className="md:col-span-3 space-y-1.5">
             <Label className="text-xs font-semibold uppercase tracking-widest text-white/70">To</Label>
             <div className="relative">
@@ -98,12 +134,11 @@ export function FlightSearchForm() {
                 className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-[52px]"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                required
               />
             </div>
           </div>
 
-          {/* Departure — 2 cols */}
+          {/* Departure */}
           <div className="md:col-span-2 space-y-1.5">
             <Label className="text-xs font-semibold uppercase tracking-widest text-white/70">Departure</Label>
             <Popover>
@@ -127,7 +162,7 @@ export function FlightSearchForm() {
             </Popover>
           </div>
 
-          {/* Return — 2 cols (Round Trip only, replaced by Travelers on One Way) */}
+          {/* Return / Travelers */}
           {tripType === "Round Trip" ? (
             <div className="md:col-span-2 space-y-1.5">
               <Label className="text-xs font-semibold uppercase tracking-widest text-white/70">Return</Label>
@@ -152,7 +187,6 @@ export function FlightSearchForm() {
               </Popover>
             </div>
           ) : (
-            /* Travelers — 2 cols on One Way */
             <div className="md:col-span-2 space-y-1.5">
               <Label className="text-xs font-semibold uppercase tracking-widest text-white/70">Travelers</Label>
               <Select value={passengers} onValueChange={setPassengers}>
@@ -171,19 +205,22 @@ export function FlightSearchForm() {
             </div>
           )}
 
-          {/* Search CTA — always 1 col */}
+          {/* Search CTA */}
           <div className="md:col-span-1">
             <Button
               type="submit"
+              disabled={loading}
               className="w-full h-[52px] btn-gold rounded-xl text-sm font-bold tracking-wide shadow-gold gap-2 pulse-glow"
             >
-              <Search className="h-4 w-4" />
-              <span className="hidden lg:inline">Search</span>
+              {loading
+                ? <Loader2 className="h-4 w-4 animate-spin" />
+                : <><Search className="h-4 w-4" /><span className="hidden lg:inline">Search</span></>
+              }
             </Button>
           </div>
         </div>
 
-        {/* Secondary row — Travelers + Cabin class (always visible, compact) */}
+        {/* Secondary row — Travelers + Cabin class */}
         <div className="grid grid-cols-2 md:grid-cols-12 gap-3">
           {tripType === "Round Trip" && (
             <div className="col-span-1 md:col-span-3 space-y-1.5">
