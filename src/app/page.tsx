@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
-import { FlightSearchForm } from "@/components/flight-search-form";
+import { DuffelLinks } from "@/components/duffel-links";
 import { HeroSlider } from "@/components/slider";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Card, CardContent } from "@/components/ui/card";
@@ -87,9 +87,9 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Search panel */}
+              {/* Duffel Search Panel */}
               <div className="glass-dark rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
-                <FlightSearchForm />
+                <DuffelLinks />
               </div>
 
               {/* Trust pills */}
@@ -157,6 +157,7 @@ export default function Home() {
                   key={`a-${i}`}
                   src={src}
                   alt={`Partner ${i + 1}`}
+                  loading="lazy"
                   className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"
                 />
               ))}
@@ -177,6 +178,7 @@ export default function Home() {
                   key={`b-${i}`}
                   src={src}
                   alt={`Partner ${i + 1}`}
+                  loading="lazy"
                   className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"
                 />
               ))}
@@ -488,10 +490,10 @@ export default function Home() {
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Preferred Month</label>
                       <select className="w-full h-12 px-4 rounded-[5%] border bg-background">
-                        <option>June 2025</option>
-                        <option>July 2025</option>
-                        <option>August 2025</option>
-                        <option>September 2025</option>
+                        <option>June 2026</option>
+                        <option>July 2026</option>
+                        <option>August 2026</option>
+                        <option>September 2026</option>
                       </select>
                     </div>
                     <Button className="w-full h-12 rounded-[5%] font-semibold text-lg mt-4">
@@ -949,21 +951,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function FeatureImage({ src, hint }: { src: string; hint: string }) {
-  return (
-    <div className="relative rounded-2xl overflow-hidden shadow-luxury group">
-      <Image
-        src={src}
-        alt={hint}
-        width={400}
-        height={500}
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-        data-ai-hint={hint}
-      />
     </div>
   );
 }
