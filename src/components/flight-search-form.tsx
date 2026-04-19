@@ -192,6 +192,7 @@ export function FlightSearchForm() {
                 placeholder="City or airport"
                 className="pl-10 bg-white/95 border-transparent focus:border-secondary/50 rounded-xl text-foreground placeholder:text-muted-foreground font-medium h-11"
                 value={destination}
+                onChange={(e) => setDestination(e.target.value)}
                 list="airports-dest"
                 aria-label="Destination airport or city"
               />
